@@ -42,7 +42,7 @@ const Navba = () => {
         <Navbar.Link as={Link} to="/signup" className="text-green-600 py-1 md:py-0">
           Sign Up
         </Navbar.Link>
-        <Navbar.Link as={Link} to="/dashboard" className="text-green-600 py-1 md:py-0">
+        <Navbar.Link as={Link} to="/admin-dashboard/:category" className="text-green-600 py-1 md:py-0">
           Dashboard
         </Navbar.Link>
         <Navbar.Link href="#" onClick={handleLogout} className="text-green-600 py-1 md:py-0">
