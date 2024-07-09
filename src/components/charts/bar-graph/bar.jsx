@@ -35,7 +35,7 @@ const Bar = () => {
         <div className=' w-full'>
             <div className="flex justify-between items-center mb-4">
                 <div className="text-zinc-900 text-base font-medium leading-normal">Hourly sales report</div>
-                <div className="text-right text-orange-600 text-sm font-semibold leading-tight cursor-pointer">View All</div>
+                <div className="text-right text-green-600 text-sm font-semibold leading-tight cursor-pointer">View All</div>
             </div>
             <div className="w-full mb-4 justify-start items-center gap-3 flex flex-wrap">
                 <div className="group relative grow min-w-fit shrink basis-0 h-[42px] px-3.5 py-3 bg-white rounded-lg border border-neutral-200 ">
@@ -52,7 +52,7 @@ const Bar = () => {
                                     <div key={index} onClick={() => {
                                         SelectedCountry(country)
                                         setCityArray(cities)
-                                    }} className='p-2 px-3 text-zinc-900 hover:text-orange-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
+                                    }} className='p-2 px-3 text-zinc-900 hover:text-green-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
                                         {country}
                                     </div>
                                 )

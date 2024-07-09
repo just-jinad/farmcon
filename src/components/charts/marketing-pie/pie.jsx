@@ -10,7 +10,7 @@ const Pie = () => {
                     <i className='fa-solid fa-location-dot fa-xl text-zinc-500'></i>
                     <div className="grow shrink basis-0 text-zinc-900 text-base font-semibold leading-normal">Order by Location</div>
                 </div>
-                <div className=" cursor-pointer text-right text-orange-600 text-sm font-semibold leading-tight">View All</div>
+                <div className=" cursor-pointer text-right text-green-600 text-sm font-semibold leading-tight">View All</div>
             </div>
             <div className=" mt-8">
                 <AccumulationChartComponent

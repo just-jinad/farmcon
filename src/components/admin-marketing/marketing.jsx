@@ -9,6 +9,7 @@ const Marketing = () => {
   return (
     <div className='p-6 min-h-screen'>
       <div className="">
+        {/* changes the date */}
         <Options />
       </div>
       <div className="flex mb-6 gap-6 flex-wrap lg:flex-nowrap justify-between">

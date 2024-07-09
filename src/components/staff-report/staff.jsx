@@ -6,7 +6,7 @@ const Staff = () => {
         <div className="w-full bg-white rounded-xl p-6">
             <div className=" flex justify-between pb-4">
                 <div className=" text-zinc-900 text-base font-semibold leading-normal">Staff wise report</div>
-                <div className=" text-right text-orange-600 text-sm font-semibold leading-tight">View All</div>
+                <div className=" text-right text-green-600 text-sm font-semibold leading-tight">View All</div>
             </div>
             <div className=" flex-col justify-start items-start inline-flex w-full">
                 {

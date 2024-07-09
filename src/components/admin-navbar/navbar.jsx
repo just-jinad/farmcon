@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import { Context } from '../../context/index'
 import dinein from '../../dates/imgs/dinein.png'
 import walkin from '../../dates/imgs/walkin.png'
-import logo from '../../dates/imgs/logo.png'
+import logo from '../../assets/images/farmcon logo2.jpg'  
+// import logo from '../../dates/imgs/logo.png'
 const Navbar = () => {
 
     let { state, dispatch } = useContext(Context)
@@ -14,9 +15,9 @@ const Navbar = () => {
             <div className=" flex gap-6 items-center">
                 {/* <img src={require('../admin-page/Screenshot_6.png')} alt="" /> */}
                 <div className=" border-r pr-6 border-[#e4e4e4]">
-                    <img src={logo} alt="" />
+                    <img className='max-w-2xl max-h-10' src={logo} alt="" />
                 </div>
-                <div className=" text-xl font-semibold leading-8 text-[#19191C]" onClick={toogle}>Dashboard</div>
+                <div className=" text-xl font-semibold leading-8 text-[#19191C]" onClick={toogle}>Farmcon</div>
             </div>
             <div className="justify-start items-start gap-8 flex">
                 <div className="hidden rounded-[50px] border border-neutral-200 justify-start items-start md:flex">

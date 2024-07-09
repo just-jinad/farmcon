@@ -74,7 +74,7 @@ const Options = () => {
                                     <div key={index} onClick={() => {
                                         SelectedCountry(country)
                                         setCityArray(cities)
-                                    }} className='p-2 px-3 text-zinc-900 hover:text-orange-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
+                                    }} className='p-2 px-3 text-zinc-900 hover:text-green-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
                                         {country}
                                     </div>
                                 )
@@ -98,7 +98,7 @@ const Options = () => {
                                     <div key={index} onClick={() => {
                                         SelectedCity(city)
                                         setMultiLocations(multilocation)
-                                    }} className='p-2 px-3 text-zinc-900 hover:text-orange-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
+                                    }} className='p-2 px-3 text-zinc-900 hover:text-green-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
                                         {city}
                                     </div>
                                 )
@@ -121,7 +121,7 @@ const Options = () => {
                                 return (
                                     <div key={index} onClick={() => {
                                         SelectedMultiLocation(el)
-                                    }} className='p-2 px-3 text-zinc-900 hover:text-orange-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
+                                    }} className='p-2 px-3 text-zinc-900 hover:text-green-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
                                         {el}
                                     </div>
                                 )
@@ -144,7 +144,7 @@ const Options = () => {
                                 return (
                                     <div key={index} onClick={() => {
                                         SelectedWalkIn(el)
-                                    }} className='p-2 px-3 text-zinc-900 hover:text-orange-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
+                                    }} className='p-2 px-3 text-zinc-900 hover:text-green-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
                                         {el}
                                     </div>
                                 )
@@ -154,7 +154,7 @@ const Options = () => {
                 </div>
             </div>
             <div className="h-[42px] w-full xl:w-auto px-3.5 py-3 bg-white rounded border border-neutral-200 justify-start items-center gap-3 flex">
-                <div className=" text-orange-600 text-lg" ><i class="fa-solid fa-calendar-days"></i></div>
+                <div className=" text-green-600 text-lg" ><i class="fa-solid fa-calendar-days"></i></div>
                 <div className="grow shrink basis-0 w-full text-zinc-900 text-xs font-normal leading-[18px]">Today : Apr 25, 2018 12:00 AM - Apr 26, 2018 12:00 AM</div>
 
             </div>
