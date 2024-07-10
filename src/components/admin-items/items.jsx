@@ -5,7 +5,7 @@ const Items = (props) => {
         <div className=" p-6 w-full relative bg-white rounded-xl">
             <div className="flex items-center justify-between mb-6">
                 <div className=" text-zinc-900 text-base font-semibold leading-normal">{props.array.title}</div>
-                <div className=" text-right text-orange-600 text-sm font-semibold leading-tight">View All</div>
+                <div className=" text-right text-green-600 text-sm font-semibold leading-tight">View All</div>
             </div>
             <div className=" flex-col w-full justify-start gap-4 items-start inline-flex">
                 {

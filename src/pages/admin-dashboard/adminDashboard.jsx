@@ -7,7 +7,7 @@ import Marketing from '../../components/admin-marketing/marketing'
 import { useParams } from 'react-router-dom'
 import { Data } from '../../dates/jummy'
 import HashLoader from "react-spinners/HashLoader";
-
+import UserProducts from "../admin-dashboard/UserProducts"
 
 const AdminDashboard = () => {
   const [loading, setLoading] = useState(true)
@@ -45,6 +45,9 @@ const AdminDashboard = () => {
           }
           {
             category === 'marketing' && <Marketing />
+          }
+           {
+            category === 'userprofile' && <UserProducts/>
           }
         </div>
       </div>

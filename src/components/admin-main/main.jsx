@@ -1,13 +1,10 @@
-// import Line from '../../components/charts/linechart/line'
+
 import React, { useEffect, useState } from "react";
 import Cards from "../../components/admin-sale-cards/cards";
 import Options from "../../components/options/options";
 import Bar from "../../components/charts/bar-graph/bar";
 import { toast } from "react-toastify";
-
 import axios from "axios";
-
-// import { dateCards } from '../../dates/jummy'
 
 const Main = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -27,9 +24,9 @@ const Main = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-    const handleFileChange = (e) => {
-      setFormData({ ...formData, file: e.target.files[0] });
-    };
+  const handleFileChange = (e) => {
+    setFormData({ ...formData, file: e.target.files[0] });
+  };
 
   const getToken = () => JSON.parse(localStorage.getItem("jwtToken"));
 
@@ -45,7 +42,7 @@ const Main = () => {
       const response = await axios.post("http://localhost:8888/upload", data, {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`, // Include the token in the headers
+          Authorization: `Bearer ${token}`, 
         },
       });
 
@@ -70,17 +67,6 @@ const Main = () => {
     }
   };
 
-  //   const toggleModal = () => {
-  //     setModalOpen(!modalOpen);
-  //   };
-
-  //   const toggleSidebar = () => {
-  //     setSidebarOpen(!sidebarOpen);
-  //   };
-
-  //   const closeSidebar = () => {
-  //     setSidebarOpen(sidebarOpen);
-  //   };
 
   return (
     <div className="p-6 mb-6 bg-slate-50 min-h-screen">
@@ -93,50 +79,14 @@ const Main = () => {
       </div>
       <div className="flex gap-4 flex-wrap">
         <div className=" p-6 w-full my-4 lg:w-[64%] bg-white rounded-xl">
-          <div className="ext-zinc-900 text-base font-medium leading-normal mb-8">
+          <div className="ext-zinc-900 text-base text-center font-medium leading-normal mb-8">
             Upload Product
           </div>
           <div className=" justify-start gap-2 flex flex-wrap">
-            {/* {
-                            dateCards.map(({ text, earn, percent, color }) => {
-                                return (
-                                    <div className={`grow shrink basis-0 h-[100px] p-3 bg-white rounded-sm shadow border-t-2 ${color} flex-col justify-start items-start gap-4 inline-flex`}>
-                                        <div className="self-stretch text-zinc-500 text-xs font-medium leading-[18px]">{text}</div>
-                                        <div className="self-stretch justify-start items-baseline gap-1 inline-flex">
-                                            <div className="text-zinc-900 text-xl font-semibold leading-[30px]">${earn}</div>
-                                            <div className="grow shrink basis-0 text-lime-500 text-xs font-normal leading-[18px]">+{percent}</div>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                        <Line /> */}
-
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-              Take a moment to fill in product details ☘️
+            <h3 className="text-xl text-end font-semibold text-gray-900 dark:text-white">
+            ☘️  Take a moment to fill in product details ☘️
             </h3>
-            <button
-              type="button"
-              className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-              data-modal-hide="default-modal"
-            >
-              <svg
-                className="w-3 h-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                />
-              </svg>
-              <span className="sr-only">Close modal</span>
-            </button>
+        
           </div>
           <div className="p-4 md:p-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -244,11 +194,11 @@ const Main = () => {
               <div class="flex items-center justify-center w-full">
                 <label
                   for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                  class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 "
                 >
                   <div class="flex flex-col items-center justify-center pt-5 pb-6">
                     <svg
-                      class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                      className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -270,8 +220,13 @@ const Main = () => {
                       SVG, PNG, JPG or GIF (MAX. 800x400px)
                     </p>
                   </div>
-                  <input id="dropzone-file" 
-                      name="file"      onChange={handleFileChange} type="file" class="hidden" />
+                  <input
+                    id="dropzone-file"
+                    name="file"
+                    onChange={handleFileChange}
+                    type="file"
+                    class="hidden"
+                  />
                 </label>
               </div>
             </div>

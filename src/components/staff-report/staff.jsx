@@ -32,4 +32,3 @@ const Staff = () => {
 
 export default Staff
 
-// shahribek

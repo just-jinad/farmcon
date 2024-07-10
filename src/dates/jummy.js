@@ -24,8 +24,8 @@ export let Data = [
             },
             {
                 icon: 'fa-solid fa-comments-dollar',
-                text: 'Business Summary',
-                url: 'main'
+                text: 'User Profile',
+                url: 'userprofile'
             },
             {
                 icon: 'fa-regular fa-floppy-disk',
