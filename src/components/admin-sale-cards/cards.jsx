@@ -15,8 +15,10 @@ const Cards = () => {
                                 </div>
                                 <div className="self-stretch h-[72px] flex-col justify-center items-start gap-1 flex">
                                     <div className="text-zinc-900 text-[40px] font-semibold leading-[48px]">{money}</div>
+                                    
                                     <div className="h-5 relative flex gap-2">
                                         <div className={`${percentColor} flex items-center`}>
+                                            
                                             <div className={` text-sm font-semibold leading-tight`}><i className={trend}></i></div>
                                             <div className="">
                                                 <div className="text-sm font-semibold leading-tight" >{percent}</div>

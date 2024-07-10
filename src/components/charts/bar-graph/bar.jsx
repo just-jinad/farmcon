@@ -75,7 +75,7 @@ const Bar = () => {
                                 return (
                                     <div key={index} onClick={() => {
                                         SelectedCity(city)
-                                    }} className='p-2 px-3 text-zinc-900 hover:text-orange-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
+                                    }} className='p-2 px-3 text-zinc-900 hover:text-green-600 duration-500 hover:bg-orange-50 text-lg hover:font-semibold'>
                                         {city}
                                     </div>
                                 )
