@@ -39,15 +39,14 @@ const Home = () => {
     
 
       <div>
-      <div className="container mx-auto py-8">
-      <div className="text-center">
-        <h3 className="text-2xl font-semibold mb-4">Why Choose Us</h3>
-        <p className="text-lg mb-8">
+      <div className="container mx-auto p-8">
+        <h3 className="text-2xl text-center font-semibold mb-4">Why Choose Us</h3>
+        <p className="text-lg mb-8 text-center">
           At FarmCon, we understand the unique challenges and opportunities that Nigerian farmers face. That's why we've created a platform specifically tailored to meet the needs of local farmers like you. Here are just a few reasons why you should choose FarmCon:
         </p>
-      </div>
+     
 
-      <div className="flex flex-wrap -mx-4">
+      <div className="flex flex-wrap -mx-4 ">
         <div className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
           <div className="mb-6">
             <i className="bi bi-truck text-4xl"></i>
@@ -66,7 +65,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 px-4">
+        <div className="w-full lg:w-1/2 p-4">
           <div className="mb-6">
             <i className="bi bi-shop text-4xl"></i>
             <h6 className="text-xl font-semibold mt-2">Fair and Transparent Pricing</h6>
@@ -75,7 +74,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="mb-6">
+          <div className="mb-6 p-2">
             <i className="bi bi-tools text-4xl"></i>
             <h6 className="text-xl font-semibold mt-2">Empowering Local Farmers</h6>
             <p className="text-sm mt-1">
@@ -95,7 +94,7 @@ const Home = () => {
     </div>
         </div>
 
-        <div className="container mx-auto py-8 flex flex-wrap">
+        <div className="container mx-auto p-4 flex flex-wrap">
       <div className="w-full lg:w-1/3 px-4 mb-8 lg:mb-0">
         <img
           className="rounded-lg w-full h-auto"
