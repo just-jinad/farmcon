@@ -3,8 +3,8 @@ import React from 'react'
 import Typewriter from '../../components/frontcomponent/Typewriter'
 import wheat from '../../assets/images/wheat image.png'
 import corn from '../../assets/images/wheat image.png'
-
 import Footer from '../../components/frontcomponent/Footer'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
  
@@ -21,10 +21,11 @@ const Home = () => {
         <br />
         With FarmCon, selling your farm-fresh goods has never been easier. From the fertile lands of Nigeria to your customers' tables, the process is simple. Cultivate your crops with care, capture their vibrant essence in a snap, and upload them to FarmCon.
       </p>
+      <Link to="/signup">
       <button className='button39 mt-3 text-green-600  '>
-        
          Get started
        </button>
+      </Link>
     </div>
 
     <div className="col-md-6 flex justify-center items-center md:justify-end md:items-start mt-3 mb-3">
@@ -83,16 +84,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <div className="w-full lg:w-1/2 mx-auto">
-        {/* <img
-          className=""
-          src="https://i.pinimg.com/564x/2c/51/7b/2c517b86dcfe44019cb2a9beb9847212.jpg"
-          alt=""
-        /> */}
-      </div>
     </div>
         </div>
+
 
         <div className="container mx-auto p-4 flex flex-wrap">
       <div className="w-full lg:w-1/3 px-4 mb-8 lg:mb-0">
