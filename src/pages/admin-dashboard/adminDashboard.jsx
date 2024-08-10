@@ -31,7 +31,7 @@ const AdminDashboard = () => {
     {
       loading ? (
         <div className="flex items-center justify-center h-screen">
-        <HashLoader color="#36d7b7" />
+        <HashLoader color="#036672" />
       </div>
       ) : (
 

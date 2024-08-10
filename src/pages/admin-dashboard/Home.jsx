@@ -1,168 +1,421 @@
-import React from 'react'
-// import Card from '../../components/frontcomponent/Card'
-import Typewriter from '../../components/frontcomponent/Typewriter'
-import wheat from '../../assets/images/wheat image.png'
-import corn from '../../assets/images/wheat image.png'
-import Footer from '../../components/frontcomponent/Footer'
+import React, { useState } from 'react';
+import Footer from '../../components/frontcomponent/Footer';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
- 
   return (
-   <>
-    <div className="container-fluid" >
-    <div className="col-md-6 text-center p-4 md:p-10">
-      <h4 className="mt-4 mb-4 text-xl">🌱 Grow. Snap. Sell. Buy.🌱</h4>
-      <p className="text-base" data-aos="fade-up">
-        <Typewriter
-          text="Welcome to FarmCon, your number one online platform for buying and selling farm produce"
-          speed={50}
-        />
-        <br />
-        With FarmCon, selling your farm-fresh goods has never been easier. From the fertile lands of Nigeria to your customers' tables, the process is simple. Cultivate your crops with care, capture their vibrant essence in a snap, and upload them to FarmCon.
-      </p>
-      <Link to="/signup">
-      <button className='button39 mt-3 text-green-600  '>
-         Get started
-       </button>
-      </Link>
-    </div>
-
-    <div className="col-md-6 flex justify-center items-center md:justify-end md:items-start mt-3 mb-3">
-      {/* <img
-        className="rounded-lg mt-2 w-full md:w-4/5 lg:w-3/5 max-h-96"
-        src="https://i.pinimg.com/736x/e1/04/b7/e104b7ba5937fa428b036581bc3876dc.jpg"
-        alt=""
-      /> */}
-    </div>
-
-</div>
-    
-
-      <div>
-      <div className="container mx-auto p-8">
-        <h3 className="text-2xl text-center font-semibold mb-4">Why Choose Us</h3>
-        <p className="text-lg mb-8 text-center">
-          At FarmCon, we understand the unique challenges and opportunities that Nigerian farmers face. That's why we've created a platform specifically tailored to meet the needs of local farmers like you. Here are just a few reasons why you should choose FarmCon:
-        </p>
-     
-
-      <div className="flex flex-wrap -mx-4 ">
-        <div className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
-          <div className="mb-6">
-            <i className="bi bi-truck text-4xl"></i>
-            <h6 className="text-xl font-semibold mt-2">Seamless Selling Experience</h6>
-            <p className="text-sm mt-1">
-              With FarmCon, selling your goods is quick, easy, and hassle-free. Our user-friendly platform allows you to upload photos of your produce, set your prices, and connect with eager buyers from across Nigeria.
-            </p>
+    <>
+      <main>
+        <div className="relative pt-16 pb-32 flex content-center items-center justify-center"
+            style={{
+              minHeight: "75vh"
+            }}>
+          <div className="absolute top-0 w-full h-full bg-center bg-cover"
+              style={{
+                backgroundImage: "url('https://i.pinimg.com/564x/d3/16/2f/d3162fc944e59dc9cb69a9c892e865a9.jpg')"
+              }}>
+            <span id="blackOverlay" className="w-full h-full absolute opacity-75 bg-black"></span>
           </div>
+          <div className="container relative mx-auto">
+              <div className="items-center flex flex-wrap">
+                <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                  <div className="pr-12">
+                    <h1 className="text-white font-semibold text-5xl">
+                      Your story starts with us.
+                    </h1>
+                    <p className="mt-4 text-lg text-gray-300">
+                    Welcome to FarmCon, your number one online platform for buying and selling farm produce.
+                    </p>
+                  </div>
+                </div>
 
-          <div className="mb-6">
-            <i className="bi bi-alarm text-4xl"></i>
-            <h6 className="text-xl font-semibold mt-2">24/7 support</h6>
-            <p className="text-sm mt-1">
-              As a FarmCon member, you'll have access to a wealth of resources and support to help you succeed. From marketing tips to agricultural advice, we're here to help you grow your business and achieve your goals.
-            </p>
+              </div>
+          </div>
+          <div
+            className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+            style={{ height: "70px" }}
+          >
+            <svg
+              className="absolute bottom-0 overflow-hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className="text-white fill-current"
+                points=""
+              ></polygon>
+            </svg>
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 p-4">
-          <div className="mb-6">
-            <i className="bi bi-shop text-4xl"></i>
-            <h6 className="text-xl font-semibold mt-2">Fair and Transparent Pricing</h6>
-            <p className="text-sm mt-1">
-              Our streamlined online platform makes shopping effortless, offering an intuitive browsing experience to find your perfect pieces with ease.
-            </p>
+        <section className="pb-20  -mt-24">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap">
+              <div className="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                  <div className="px-4 py-5 flex-auto">
+                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
+                      <i className="fas fa-award"></i>
+                    </div>
+                    <h6 className="text-xl font-semibold text-teal-600 ">Seamless Selling Experience</h6>
+                    <p className="mt-2 mb-4 text-black">
+                    With FarmCon, selling your goods is quick, easy, and hassle-free. Our user-friendly platform allows you to upload photos of your produce, set your prices, and connect with eager buyers from across Nigeria.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full md:w-4/12 px-4 text-center">
+                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                  <div className="px-4 py-5 flex-auto">
+                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400">
+                      <i className="fas fa-retweet"></i>
+                    </div>
+                    <h6 className="text-xl text-teal-600  font-semibold">
+                    Empowering Local Farmers  
+                    </h6>
+                    <p className="mt-2 mb-4 text-black">
+                    FarmCon is committed to empowering Nigerian farmers by providing them with a direct avenue to showcase and sell their produce. We believe in the importance of supporting local agriculture and helping farmers thrive in their communities.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-6 w-full md:w-4/12 px-4 text-center">
+                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                  <div className="px-4 py-5 flex-auto">
+                    <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400">
+                      <i className="fas fa-fingerprint"></i>
+                    </div>
+                    <h6 className="text-xl text-teal-600 font-semibold">
+                    24/7 Support
+                    </h6>
+                    <p className="mt-2 mb-4 text-black">
+                    As a FarmCon member, you'll have access to a wealth of resources and support to help you succeed. From marketing tips to agricultural advice, we're here to help you grow your business and achieve your goals.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="flex flex-wrap items-center mt-32">
+              <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                <div className="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100">
+                  <i className="fas fa-user-friends text-xl"></i>
+                </div>
+                <h3 className="text-3xl mb-2 font-semibold leading-normal text-teal-600 ">
+                  Working with us is a pleasure
+                </h3>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
+                Navigate FarmCon’s user-friendly platform with ease. Our simple interface makes it easy to upload listings, connect with buyers, and manage your farm business efficiently, even with just one person.
+                
+                </p>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
+                List your farm produce quickly and effortlessly on FarmCon’s platform. With just a few simple steps, you can showcase your goods to potential buyers without any hassle.
+                </p>
+               
+              </div>
+
+              <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg ">
+                  <img
+                    alt="..."
+                    src="https://i.pinimg.com/736x/fe/9f/19/fe9f1946cd45b2228d0d85df5f95d92e.jpg"
+                    className="w-full align-middle rounded-t-lg"
+                  />
+                  <blockquote className="relative p-8 mb-4">
+                    <svg
+                      preserveAspectRatio="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 583 95"
+                      className="absolute left-0 w-full block"
+                      style={{
+                        height: "95px",
+                        top: "-94px"
+                      }}
+                    >
+                      <polygon
+                        points="-30,95 583,95 583,65"
+                        className="text-teal-600 fill-current"
+                      ></polygon>
+                    </svg>
+                    <h4 className="text-xl font-bold text-white">
+                      Top Notch Services
+                    </h4>
+                    <p className="text-md font-light mt-2 text-white">
+                      The Arctic Ocean freezes every winter and much of the
+                      sea-ice then thaws every summer, and that process will
+                      continue whatever happens.
+                    </p>
+                  </blockquote>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section className="relative py-20">
+          <div
+            className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+            style={{ height: "80px" }}
+          >
+            <svg
+              className="absolute bottom-0 overflow-hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className="text-white fill-current"
+                points="2560 0 2560 100 0 100"
+              ></polygon>
+            </svg>
           </div>
 
-          <div className="mb-6 p-2">
-            <i className="bi bi-tools text-4xl"></i>
-            <h6 className="text-xl font-semibold mt-2">Empowering Local Farmers</h6>
-            <p className="text-sm mt-1">
-              FarmCon is committed to empowering Nigerian farmers by providing them with a direct avenue to showcase and sell their produce. We believe in the importance of supporting local agriculture and helping farmers thrive in their communities.
-            </p>
+          <div className="container mx-auto px-4">
+            <div className="items-center flex flex-wrap">
+              <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
+                <img
+                  alt="..."
+                  className="max-w-full rounded-lg shadow-lg"
+                  src="https://i.pinimg.com/736x/b0/a3/f5/b0a3f5445135b0fb40c07ffdf7d4d0fb.jpg"
+                />
+              </div>
+              <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
+                <div className="md:pr-12">
+                  <div className="text-white p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-teal-600">
+                    <i className="fas fa-rocket text-xl"></i>
+                  </div>
+                  <h3 className="text-3xl font-semibold text-teal-600">
+                    A growing business
+                  </h3>
+                  <p className="mt-4 text-lg leading-relaxed text-black">
+                    FarmCon helps Local farmers and industrial farmers alike reach a larger customer base thereby giving a much needed boost to business.
+                  </p>
+                  <ul className="list-none mt-6">
+                    <li className="py-2">
+                      <div className="flex items-center">
+                        <div>
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-white bg-teal-600 mr-3">
+                            <i className="fas fa-fingerprint"></i>
+                          </span>
+                        </div>
+                        <div>
+                          <h4 className="text-black">
+                          Empowering Local Farmers
+                          </h4>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="py-2">
+                      <div className="flex items-center">
+                        <div>
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-white bg-teal-600 mr-3">
+                            <i className="fab fa-html5"></i>
+                          </span>
+                        </div>
+                        <div>
+                          <h4 className="text-black">Transparent Transactions</h4>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="py-2">
+                      <div className="flex items-center">
+                        <div>
+                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-white bg-teal-600 mr-3">
+                            <i className="far fa-paper-plane"></i>
+                          </span>
+                        </div>
+                        <div>
+                          <h4 className="text-black">24/7 Support</h4>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-        </div>
+        </section>
 
 
-        <div className="container mx-auto p-4 flex flex-wrap">
-      <div className="w-full lg:w-1/3 px-4 mb-8 lg:mb-0">
-        <img
-          className="rounded-lg w-full h-auto"
-          src="https://i.pinimg.com/564x/60/33/07/60330796f0538d179979516bc159f4eb.jpg"
-          alt="Farming"
-        />
-      </div>
-      <div className="w-full lg:w-2/3 px-4">
-        <h3 className="text-2xl font-semibold mb-4">FarmCon - Your Simple Farming Solution</h3>
-        <p className="text-lg mb-8">
-          At FarmCon, we're here to offer a straightforward platform to help you kickstart your farming journey. As a budding farmer, you may not have a large team behind you, and that's okay. Here's what we bring to the table:
-        </p>
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-            <h6 className="text-xl font-semibold mb-2">Easy Listing Process</h6>
-            <p className="text-sm mb-4">
-              List your farm produce quickly and effortlessly on FarmCon's platform. With just a few simple steps, you can showcase your goods to potential buyers without any hassle.
-            </p>
+        <section className="pt-20 pb-48">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap justify-center text-center mb-24">
+              <div className="w-full lg:w-6/12 px-4">
+                <h2 className="text-2xl font-semibold text-teal-600">
+                  Some Listed Products 
+                </h2>
+               
+              </div>
+            </div>
+            <div className="flex flex-wrap">
+            
+            <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                <div className="px-6">
+                  <img
+                    alt="..."
+                    src="https://i.pinimg.com/564x/b5/9c/b2/b59cb20d0535627da526198c73c2e736.jpg"
+                    className="shadow-lg rounded-full max-w-full mx-auto"
+                    style={{ maxWidth: "120px" }}
+                  />
+                  <div className="pt-6 text-center">
+                    <h5 className="text-xl font-bold">
+                      Cashew 
+                    </h5>
+                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                      ogobomoso axis
+                    </p>
+                    <div className="mt-6">
+                      <button
+                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-google"></i>
+                      </button>
+                      <button
+                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-facebook-f"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <h6 className="text-xl font-semibold mb-2">Transparent Transactions</h6>
-            <p className="text-sm mb-4">
-              Experience transparent transactions with FarmCon's secure payment system. We prioritize honesty and integrity in all our dealings, ensuring a fair and trustworthy marketplace for all.
-            </p>
+
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                <div className="px-6">
+                  <img
+                    alt="..."
+                    src="https://i.pinimg.com/564x/b5/9c/b2/b59cb20d0535627da526198c73c2e736.jpg"
+                    className="shadow-lg rounded-full max-w-full mx-auto"
+                    style={{ maxWidth: "120px" }}
+                  />
+                  <div className="pt-6 text-center">
+                    <h5 className="text-xl font-bold">
+                     Cashew axis
+                    </h5>
+                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    ogobomoso axis
+                    </p>
+                    <div className="mt-6">
+                      <button
+                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-google"></i>
+                      </button>
+                      <button
+                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-facebook-f"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                <div className="px-6">
+                  <img
+                    alt="..."
+                    src="https://i.pinimg.com/564x/85/2a/b0/852ab01cd66137f1be42722a382613b4.jpg"
+                    className="shadow-lg rounded-full max-w-full mx-auto"
+                    style={{ maxWidth: "120px" }}
+                  />
+                  <div className="pt-6 text-center">
+                    <h5 className="text-xl font-bold">
+                      Cassava
+                    </h5>
+                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    Koalara Area
+                    </p>
+                    <div className="mt-6">
+                      <button
+                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-google"></i>
+                      </button>
+                      <button
+                        className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-twitter"></i>
+                      </button>
+                      <button
+                        className="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-instagram"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                <div className="px-6">
+                  <img
+                    alt="..."
+                    src="https://i.pinimg.com/564x/c3/90/19/c390196a1aa96ee07617fd23f4a27da5.jpg"
+                    className="shadow-lg rounded-full max-w-full mx-auto"
+                    style={{ maxWidth: "120px" }}
+                  />
+                  <div className="pt-6 text-center">
+                    <h5 className="text-xl font-bold">
+                      moso mango
+                    </h5>
+                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                      Isale general
+                    </p>
+                    <div className="mt-6">
+                      <button
+                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-dribbble"></i>
+                      </button>
+                      <button
+                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-google"></i>
+                      </button>
+                      <button
+                        className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-twitter"></i>
+                      </button>
+                      <button
+                        className="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-instagram"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div className="w-full md:w-1/2 px-4">
-            <h6 className="text-xl font-semibold mb-2">User-Friendly Interface</h6>
-            <p className="text-sm mb-4">
-              Navigate FarmCon's user-friendly platform with ease. Our simple interface makes it easy to upload listings, connect with buyers, and manage your farm business efficiently, even with just one person.
-            </p>
+      <Footer/>
+      </main>
+    </>
+  );
+};
 
-            <h6 className="text-xl font-semibold mb-2">Basic Farming Tips and Resources</h6>
-            <p className="text-sm mb-4">
-              Access basic farming tips and resources tailored for beginners. While we may not have a large team of experts, we strive to provide helpful information and guidance to support you along the way.
-            </p>
-          </div>
-        </div>
-        <button
-          className="bg-green-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Explore
-        </button>
-      </div>
-    </div>
-
-        <div className="flex justify-center items-center">
-      <h5 className='text-3xl'>What would you like to sell? or buy </h5>
-
-        </div>
-    <div className="relative flex items-center justify-center mt-40 bg-gray-800">
-     
-      <div  className="circle-ball  border border-green-300   p-2  ext-white flex items-center justify-center">
-      <img src={corn}  alt="" />
-      </div>
-      <div className="circle-ball   border   text-white flex items-center justify-center">
-        <img src={wheat}  alt="" />
-      </div>
-      <div className="circle-ball   border    text-white flex items-center justify-center">
-      <img src={corn}  alt="" />
-      </div>
-      <div className="circle-ball       text-white flex items-center justify-center">
-      <img src={wheat}  alt="" />
-      </div>
-      <div className="circle-ball     border text-white flex items-center justify-center">
-        <img src={corn}  alt="" />
-      </div>
-      <div className="circle-ball    border  text-white flex items-center justify-center">
-      <img src={wheat}  alt="" />
-      </div>
-    </div>
-
-    <Footer/>
-   </>
-  )
-}
-
-export default Home
+export default Home;

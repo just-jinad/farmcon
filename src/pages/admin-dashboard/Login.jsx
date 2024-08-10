@@ -79,85 +79,141 @@ const Login = () => {
     },
   });
   return (
-    <div className="flex items-center min-h-screen justify-center p-3">
-      <div className="w-96 ">
-        <div className="p-4 shadow-lg rounded-lg border-green-700">
-          <span className="flex justify-center items-center mb-3">
-            <Typewriter text="Login here" speed={250} />
-          </span>
+    <div className="">
+       <main>
+        <section className="absolute w-full h-full">
           <div
-            className="p-5"
+            className="absolute top-0 w-full h-full "
             style={{
-              backgroundImage:
-                "url(https://i.pinimg.com/564x/d7/80/1e/d7801ed2ff0420409ec4a9365260b1f0.jpg)",
-              borderBottomLeftRadius: "50px",
+              // backgroundImage:
+              //   "url(https://i.pinimg.com/236x/76/49/fa/7649fa40e4277dfa0896dc9782b6f1c4.jpg)",
+              backgroundSize: "100%",
+              backgroundRepeat: "no-repeat"
             }}
-          >
-            <img src={logo} alt="" className="h-32 rounded  mx-auto" />
-          </div>
-          <form
-            onSubmit={formik.handleSubmit}
-            style={{
-              border: "",
-              borderTopLeftRadius: "30px",
-            }}
-          >
-            <TextInput
-              style={{ backgroundColor: "white" , color:'black'}}
-              className="my-3"
-              type="text"
-              id="email"
-              name="email"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-              rightIcon={MdEmail}
-              placeholder="name@flowbite.com"
-              required
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className="alert alert-danger">{formik.errors.email}</div>
-            ) : null}
+          ></div>
+          <div className="container mx-auto px-4 h-full">
+            <div className="flex content-center items-center justify-center h-full">
+              <div className="w-full lg:w-4/12 px-4">
+                <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg  border-0">
+                  <div className="rounded-t mb-0 px-6 py-6">
+                    <div className="text-center mb-3">
+                      <h6 className="text-gray-600 text-sm font-bold">
+                        Sign in with
+                      </h6>
+                    </div>
+                    <div className="btn-wrapper text-center">
+                      <button
+                        className="bg-white active:bg-gray-100 text-green-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+                        type="button"
+                        style={{ transition: "all .15s ease" }}
+                      >
+                        <img
+                          alt="..."
+                          className="w-5 mr-1"
+                          // src={require("assets/img/github.svg").default}
+                        />
+                        Github
+                      </button>
+                      <button
+                        className="bg-white active:bg-gray-100 text-green-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+                        type="button"
+                        style={{ transition: "all .15s ease" }}
+                      >
+                        <img
+                          alt="..."
+                          className="w-5 mr-1"
+                          // src={require("assets/img/google.svg").default}
+                        />
+                        Google
+                      </button>
+                    </div>
+                    <hr className="mt-6 border-b-1 border-gray-400" />
+                  </div>
+                  <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+                    <div className="text-gray-500 text-center mb-3 font-bold">
+                      <small>Or sign in with credentials</small>
+                    </div>
+                    <form>
+                      <div className="relative w-full mb-3">
+                        <label
+                          className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                          htmlFor="grid-password"
+                        >
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                          placeholder="Email"
+                          style={{ transition: "all .15s ease" }}
+                        />
+                      </div>
 
-            <TextInput
-              style={{ backgroundColor: "white" , color:'black' }}
-              className="my-3"
-              type="text"
-              id="password"
-              name="password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.password}
-              rightIcon={MdPassword}
-              placeholder="password"
-              required
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div className="alert alert-danger">{formik.errors.password}</div>
-            ) : null}
-            <button
-              type="submit"
-              className="
-      btn btn-transparen
-      p-3
-       mt-4 w-full rounded-2xl
-     text-white 
-       fw-bold
-      bg-green-800
-      hover:bg-teal-950
-      "
-            >
-              Login
-            </button>
-            <p className="text-center mt-3">
-              Don't have an account?{" "}
-              <Link className="underline" to={"/signup"}>
-                Signup here
-              </Link>
-            </p>
-          </form>
-        </div>
-      </div>
+                      <div className="relative w-full mb-3">
+                        <label
+                          className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                          htmlFor="grid-password"
+                        >
+                          Password
+                        </label>
+                        <input
+                          type="password"
+                          className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                          placeholder="Password"
+                          style={{ transition: "all .15s ease" }}
+                        />
+                      </div>
+                      <div>
+                        <label className="inline-flex items-center cursor-pointer">
+                          <input
+                            id="customCheckLogin"
+                            type="checkbox"
+                            className="form-checkbox border-0 rounded text-gray-800 ml-1 w-5 h-5"
+                            style={{ transition: "all .15s ease" }}
+                          />
+                          <span className="ml-2 text-sm font-semibold text-gray-700">
+                            Remember me
+                          </span>
+                        </label>
+                      </div>
+
+                      <div className="text-center mt-6">
+                        <button
+                          className="bg-green-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                          type="button"
+                          style={{ transition: "all .15s ease" }}
+                        >
+                          Sign In
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div className="flex flex-wrap mt-6">
+                  <div className="w-1/2">
+                    <a
+                      href="#pablo"
+                      // onClick={e => e.preventDefault()}
+                      className="text-black"
+                    >
+                      <small>Forgot password?</small>
+                    </a>
+                  </div>
+                  <div className="w-1/2 text-right">
+                    <a
+                      href="#pablo"
+                      // onClick={e => e.preventDefault()}
+                      className="text-black"
+                    >
+                      <small>Create new account</small>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };

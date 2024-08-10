@@ -14,10 +14,10 @@ const Navbar = () => {
         <div className=' z-50 fixed left-0 top-0 right-0 h-[76px] px-6 py-4 bg-white border-b border-neutral-200 justify-between items-center gap-[20px] inline-flex'>
             <div className=" flex gap-6 items-center">
                 {/* <img src={require('../admin-page/Screenshot_6.png')} alt="" /> */}
-                <div className=" border-r pr-6 border-[#e4e4e4]">
+                <div className=" border-r pr-6 border-[#e4e4e4]">=
                     <img className='max-w-2xl max-h-10' src={logo} alt="" />
                 </div>
-                <div className=" text-xl font-semibold leading-8 text-[#19191C]" onClick={toogle}>Farmcon</div>
+                <div className=" text-xl font-semibold leading-8 text-[Chocolate12345667@]" onClick={toogle}>Farmcon</div>
             </div>
             <div className="justify-start items-start gap-8 flex">
                 <div className="hidden rounded-[50px] border border-neutral-200 justify-start items-start md:flex">

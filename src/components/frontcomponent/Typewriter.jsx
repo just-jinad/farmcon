@@ -19,7 +19,7 @@ const Typewriter = ({ text, speed }) => {
     return () => clearInterval(intervalId);
   }, [text, speed, index]);
 
-  return <div className="fw-bold text-2xl">{displayText}</div>;
+  return <div className="">{displayText}</div>;
 };
 
 export default Typewriter;

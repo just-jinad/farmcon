@@ -22,7 +22,7 @@ const Sidebar = () => {
         <div className={`${state.toggleNavbar ? 'block' : 'hidden'}`}>
             <div onClick={() => { dispatch({ type: 'SET_TOOGLE_NAVBAR', payload: false }) }} className="fixed md:hidden z-40 left-0 top-0 right-0 bottom-0 bg-slate-700 backdrop-blur-3xl opacity-60"></div>
             <div className=' h-full z-50 fixed drop-shadow-2xl md:drop-shadow flex'>
-                <div className="flex-col overflow-hidden md:overflow-auto justify-start items-start gap-4 flex bg-green-700 px-4 py-6 min-h-full">
+                <div className="flex-col overflow-hidden md:overflow-auto justify-start items-start gap-4 flex bg-teal-700 px-4 py-6 min-h-full">
                     {
                         Data.map((icon, index,) => {
                             return (

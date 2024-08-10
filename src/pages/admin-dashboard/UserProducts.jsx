@@ -42,13 +42,13 @@ const UserProducts = () => {
       ) : (
         <>
       
-        <div className="p-3 sm:ml-64">
+        <div className="p-3 ">
 
           <div className="">
             <div className="mb-4">
         <div>
-          <h2 className="text-3xl font-bold mb-6">My Products</h2>
-          <div className="grid grid-cols-3 gap-3">
+          <h2 className="text-2xl font-bold mb-6">My Products</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-4 ">
             {products.map((product) => (
               <div key={product.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">

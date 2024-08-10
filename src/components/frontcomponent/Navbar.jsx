@@ -6,9 +6,9 @@ import logo from '../../assets/images/intertwined lines.png';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+const Navba = ({ onLoginClick }) => {
+  let navigate = useNavigate();
 
-const Navba = () => {
-  let navigate = useNavigate()
   const handleLogout = () => {
     const confirmLogout = window.confirm("Are you sure you want to logout?");
   
@@ -18,11 +18,12 @@ const Navba = () => {
       navigate('/login'); 
     }
   };
+
   return (
     <Navbar fluid rounded className="py-2 px-4">
       <div className="flex items-center">
         <Navbar.Brand as={Link} to="/" className="relative flex items-center">
-          <span className="text-xl font-bold">FarmCon</span>
+          <span className="text-xl font-bold text-teal-700">FarmCon</span>
           <img 
             src={logo} 
             alt="farmcon logo" 
@@ -33,24 +34,23 @@ const Navba = () => {
       </div>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link as={Link} to="/" className="text-green-600 py-1 md:py-0">
-          Home
+        <Navbar.Link as={Link} to="/signup">
+          <button className="bg-teal-600 hover:bg-white hover:text-teal-600 hover:font-bold border-gray-200 text-white text-sm border rounded-xl p-2"> 
+            Get Started
+          </button>
         </Navbar.Link>
-        <Navbar.Link as={Link} to="/login" className="text-green-600 py-1 md:py-0">
+      
+        <Navbar.Link  className="text-teal-700 mt-2 py-1 md:py-0" onClick={onLoginClick}>
           Login
         </Navbar.Link>
-        <Navbar.Link as={Link} to="/signup" className="text-green-600 py-1 md:py-0">
-          Sign Up
+        
+        <Navbar.Link href="#" onClick={handleLogout} className="text-teal-700 mt-2 py-1 md:py-0">
+          Log out
         </Navbar.Link>
-        <Navbar.Link as={Link} to="/admin-dashboard/:category" className="text-green-600 py-1 md:py-0">
-          Dashboard
-        </Navbar.Link>
-        <Navbar.Link href="#" onClick={handleLogout} className="text-green-600 py-1 md:py-0">
-        Log out
-        </Navbar.Link>
-        <Dropdown label="About us" inline className="text-green-600 py-1 md:py-0">
+        
+        <Dropdown label="About us" inline className="text-teal-700 mt-2 py-1 md:py-0">
           <Dropdown.Item>
-            <Link  className='text-success' to="/about">
+            <Link className='text-teal-700 text-success' to="/about">
               Contact Us
             </Link>
           </Dropdown.Item>
