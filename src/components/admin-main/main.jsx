@@ -49,7 +49,7 @@ const Main = () => {
       const response = await axios.post("http://localhost:8888/upload", data, {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -81,189 +81,188 @@ const Main = () => {
         <Options />
       </div>
 
-      <div className="">
+      <div className="mb-2">
         <Cards />
       </div>
-      <div className="flex gap-4 flex-wrap">
-        <div className=" p-6 w-full my-4 lg:w-[64%] bg-white rounded-xl">
-          <div className="ext-zinc-900 text-base text-center font-medium leading-normal mb-8">
+
+      <div className="flex flex-wrap lg:flex-nowrap gap-6 mt-7">
+        <div className="w-full lg:w-2/3 bg-white rounded-xl p-6 md:p-8">
+          <h2 className="text-xl font-semibold uppercase text-teal-700 text-center mb-6 md:mb-8">
             Upload Product
-          </div>
-          <div className=" justify-start gap-2 flex flex-wrap">
-            <h3 className="text-xl text-end font-semibold text-gray-900 dark:text-white">
-              ☘️  Take a moment to fill in product details ☘️
-            </h3>
-          </div>
-          <div className="p-4 md:p-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="">
-                <label
-                  htmlFor="productName"
-                  className="text-sm font-semibold text-gray-600"
-                >
-                  Product Name
-                </label>
-                <input
-                  id="productName"
-                  name="productName"
-                  value={formData.productName}
-                  onChange={handleInputChange}
-                  className="block w-full rounded border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 "
-                  type="text"
-                />
-              </div>
+          </h2>
+          <div className="grid grid-cols-1 gap-4 md:gap-6">
+            <div>
+              <label
+                htmlFor="productName"
+                className="block text-sm font-semibold text-teal-600"
+              >
+                Product Name
+              </label>
+              <input
+                id="productName"
+                name="productName"
+                value={formData.productName}
+                onChange={handleInputChange}
+                className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                type="text"
+              />
+            </div>
 
-              <div className="">
-                <label
-                  htmlFor="category"
-                  className="text-sm font-semibold text-gray-600"
-                >
-                  Category
-                </label>
-                <input
-                  id="category"
-                  name="category"
-                  value={formData.category}
-                  onChange={handleInputChange}
-                  className="block w-full rounded border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 px-3 py-2"
-                  type="text"
-                />
-              </div>
+            <div>
+              <label
+                htmlFor="category"
+                className="block text-sm font-semibold text-teal-600"
+              >
+                Category
+              </label>
+              <input
+                id="category"
+                name="category"
+                value={formData.category}
+                onChange={handleInputChange}
+                className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                type="text"
+              />
+            </div>
 
-              <div className="md:col-span-2">
-                <label
-                  htmlFor="productDescription"
-                  className="text-sm font-semibold text-gray-600"
-                >
-                  Product Description
-                </label>
-                <textarea
-                  id="productDescription"
-                  name="productDescription"
-                  value={formData.productDescription}
-                  onChange={handleInputChange}
-                  className="block w-full rounded border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 px-3 py-2"
-                ></textarea>
-              </div>
+            <div className="col-span-1 md:col-span-2">
+              <label
+                htmlFor="productDescription"
+                className="block text-sm font-semibold text-teal-600"
+              >
+                Product Description
+              </label>
+              <textarea
+                id="productDescription"
+                name="productDescription"
+                value={formData.productDescription}
+                onChange={handleInputChange}
+                className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              ></textarea>
+            </div>
 
-              <div className="">
-                <label
-                  htmlFor="price"
-                  className="text-sm font-semibold text-gray-600"
-                >
-                  Price
-                </label>
-                <input
-                  id="price"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleInputChange}
-                  className="block w-full rounded border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 px-3 py-2"
-                  type="text"
-                />
-              </div>
+            <div>
+              <label
+                htmlFor="price"
+                className="block text-sm font-semibold text-teal-600"
+              >
+                Price
+              </label>
+              <input
+                id="price"
+                name="price"
+                value={formData.price}
+                onChange={handleInputChange}
+                className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                type="text"
+              />
+            </div>
 
-              <div className="">
-                <label
-                  htmlFor="availability"
-                  className="text-sm font-semibold text-gray-600"
-                >
-                  Availability
-                </label>
-                <input
-                  id="availability"
-                  name="availability"
-                  value={formData.availability}
-                  onChange={handleInputChange}
-                  className="block w-full rounded border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 px-3 py-2"
-                  type="text"
-                />
-              </div>
+            <div>
+              <label
+                htmlFor="availability"
+                className="block text-sm font-semibold text-teal-600"
+              >
+                Availability
+              </label>
+              <input
+                id="availability"
+                name="availability"
+                value={formData.availability}
+                onChange={handleInputChange}
+                className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                type="text"
+              />
+            </div>
 
-              <div className="">
-                <label
-                  htmlFor="location"
-                  className="text-sm font-semibold text-gray-600"
-                >
-                  Location
-                </label>
-                <input
-                  id="location"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleInputChange}
-                  className="block w-full rounded border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 "
-                  type="text"
-                />
-              </div>
+            <div>
+              <label
+                htmlFor="location"
+                className="block text-sm font-semibold text-teal-600"
+              >
+                Location
+              </label>
+              <input
+                id="location"
+                name="location"
+                value={formData.location}
+                onChange={handleInputChange}
+                className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                type="text"
+              />
+            </div>
 
-              <div className="flex items-center justify-center w-full">
-                <label
-                  htmlFor="dropzone-file"
-                  className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500"
-                >
-                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    {uploadedImage ? (
-                      <img
-                        src={uploadedImage}
-                        alt="Uploaded Product"
-                        className="object-cover w-24 h-24"
+            <div className="col-span-1 md:col-span-2">
+              <label
+                htmlFor="dropzone-file"
+                className="block text-sm font-semibold  text-teal-600"
+              >
+                Upload Image
+              </label>
+              <label
+                htmlFor="dropzone-file"
+                className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md cursor-pointer"
+              >
+                <div className="space-y-1 text-center">
+                  {uploadedImage ? (
+                    <img
+                      src={uploadedImage}
+                      alt="Uploaded Product"
+                      className="object-cover w-24 h-24 mx-auto"
+                    />
+                  ) : (
+                    <svg
+                      className="mx-auto h-12 w-12 text-gray-400"
+                      stroke="currentColor"
+                      fill="none"
+                      viewBox="0 0 48 48"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M28 8H12a4 4 0 00-4 4v24a4 4 0 004 4h24a4 4 0 004-4V20m-2-4l-6-6M30 3v10h10M14 22l4 4m0 0l4-4m-4 4v10"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
-                    ) : (
-                      <svg
-                        className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 20 16"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                        />
-                      </svg>
-                    )}
-                    <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span className="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                      SVG, PNG, JPG or GIF (MAX. 800x400px)
-                    </p>
+                    </svg>
+                  )}
+                  <div className="flex text-sm text-teal-600">
+                    <span className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500">
+                      Upload a file
+                      <input
+                        id="dropzone-file"
+                        name="file"
+                        onChange={handleFileChange}
+                        type="file"
+                        className="sr-only"
+                      />
+                    </span>
                   </div>
-                  <input
-                    id="dropzone-file"
-                    name="file"
-                    onChange={handleFileChange}
-                    type="file"
-                    className="hidden"
-                  />
-                </label>
-              </div>
+                  <p className="text-xs text-gray-500">SVG, PNG, JPG, or GIF</p>
+                </div>
+              </label>
             </div>
+          </div>
 
-            <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-              <button
-                onClick={handleSubmit}
-                className="bg-green-600 hover:bg-green-800 text-white py-2 px-4 rounded"
-              >
-                Submit
-              </button>
+          <div className="mt-8 flex justify-between">
+            <button
+              onClick={handleSubmit}
+              className="inline-flex items-center px-6 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            >
+              Submit
+            </button>
 
-              <button
-                data-modal-hide="default-modal"
-                type="button"
-                className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              >
-                Cancel Upload
-              </button>
-            </div>
+            <button
+              data-modal-hide="default-modal"
+              type="button"
+              className="inline-flex items-center px-6 py-2 border border-gray-300 rounded-md shadow-sm text-base font-medium text-gray-700 hover:text-white bg-white hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Cancel Upload
+            </button>
           </div>
         </div>
-        <div className=" p-6 w-full my-4 lg:w-1/3 bg-white rounded-xl">
+
+        <div className="w-full lg:w-1/3 bg-white rounded-xl p-6 md:p-8">
           <Bar />
         </div>
       </div>
