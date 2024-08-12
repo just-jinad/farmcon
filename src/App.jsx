@@ -6,6 +6,7 @@ import Layout from "./components/frontcomponent/Layout";
 import Signup from "./pages/admin-dashboard/Signup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PrivateRoute from "./components/frontcomponent/PrivateRoute";
 
 function App() {
 
@@ -37,7 +38,13 @@ function App() {
         </Route>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin-dashboard/:category" element={<AdminDashboard />} />
+        
+        <Route path="/admin-dashboard/:category" element={
+          <PrivateRoute>
+          <AdminDashboard />
+          </PrivateRoute>
+          } />
+       
       </Routes>
     </div>
   );

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
     "@syncfusion/ej2": "^19.4.48",
     "@syncfusion/ej2-react-calendars": "^19.4.48",
     "@syncfusion/ej2-react-charts": "^19.4.50",
@@ -25,6 +26,7 @@
     "react-bootstrap-icons": "^1.11.3",
     "react-dom": "^18.3.1",
     "react-icons": "^4.12.0",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.1",
     "react-simple-typewriter": "^5.0.1",

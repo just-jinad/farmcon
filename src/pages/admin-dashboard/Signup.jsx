@@ -6,11 +6,17 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion, AnimatePresence } from "framer-motion";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import Typewriter from "../../components/frontcomponent/Typewriter";
 
 const Signup = () => {
   // Set the default view to the registration form
   const [isSignIn, setIsSignIn] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const navigate = useNavigate();
 
@@ -90,22 +96,23 @@ const Signup = () => {
       email: Yup.string()
         .email("Invalid email address")
         .required("Email cannot be empty"),
-      password: Yup.string()
-        .required("Password cannot be empty."),
+      password: Yup.string().required("Password cannot be empty."),
     }),
     onSubmit: (values) => {
       axios
         .post("http://localhost:8888/login", values)
         .then((response) => {
           const { token } = response.data;
+
           if (token) {
             localStorage.setItem("jwtToken", JSON.stringify(token));
+            console.log(token);
             toast.success("Login successful", {
               position: "top-center",
               autoClose: 5000,
             });
             setTimeout(() => {
-              navigate("/admin-dashboard/:category");
+              // navigate("/admin-dashboard/:category");
             }, 3000);
           }
         })
@@ -120,8 +127,6 @@ const Signup = () => {
         });
     },
   });
-
-
 
   return (
     <div className="flex min-h-screen">
@@ -143,7 +148,9 @@ const Signup = () => {
           <div className="text-right mb-4">
             {isSignIn ? (
               <>
-                <span className="text-gray-500 mr-2">Don't have an account?</span>
+                <span className="text-gray-500 mr-2">
+                  Don't have an account?
+                </span>
                 <button
                   onClick={() => setIsSignIn(false)}
                   className="bg-teal-700 text-white px-4 py-2 rounded"
@@ -153,7 +160,9 @@ const Signup = () => {
               </>
             ) : (
               <>
-                <span className="text-gray-500 mr-2">Already have an account?</span>
+                <span className="text-gray-500 mr-2">
+                  Already have an account?
+                </span>
                 <button
                   onClick={() => setIsSignIn(true)}
                   className="bg-teal-700 text-white px-4 py-2 rounded"
@@ -194,27 +203,42 @@ const Signup = () => {
                       </div>
                     ) : null}
                   </div>
+
                   <div className="mb-4">
                     <label htmlFor="password" className="block text-gray-700">
                       Password:
                     </label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      onChange={formikLogin.handleChange}
-                      onBlur={formikLogin.handleBlur}
-                      value={formikLogin.values.password}
-                      className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
-                      placeholder="Enter your password"
-                    />
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        id="password"
+                        name="password"
+                        onChange={formikLogin.handleChange}
+                        onBlur={formikLogin.handleBlur}
+                        value={formikLogin.values.password}
+                        className="w-full px-4 py-2 pr-12 border rounded focus:outline-none focus:ring-2 focus:ring-teal-500 sm:text-sm"
+                        placeholder="Enter your password"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => togglePasswordVisibility("password")}
+                        className="absolute inset-y-0 right-0 flex items-center px-3 text-sm font-medium text-gray-600"
+                      >
+                        {showPassword ? (
+                          <EyeIcon className="w-5 h-5" />
+                        ) : (
+                          <EyeSlashIcon className="w-5 h-5" />
+                        )}
+                      </button>
+                    </div>
                     {formikLogin.touched.password &&
                     formikLogin.errors.password ? (
-                      <div className="text-red-500">
+                      <div className="text-red-500 text-sm">
                         {formikLogin.errors.password}
                       </div>
                     ) : null}
                   </div>
+
                   <button
                     type="submit"
                     className="w-full bg-teal-700 text-white font-semibold px-4 py-2 rounded shadow hover:bg-teal-600 transition"
@@ -357,19 +381,32 @@ const Signup = () => {
                       <label htmlFor="password" className="block text-gray-700">
                         Password:
                       </label>
-                      <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        onChange={formikSignup.handleChange}
-                        onBlur={formikSignup.handleBlur}
-                        value={formikSignup.values.password}
-                        className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        placeholder="Enter your password"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          id="password"
+                          name="password"
+                          onChange={formikSignup.handleChange}
+                          onBlur={formikSignup.handleBlur}
+                          value={formikSignup.values.password}
+                          className="w-full px-4 py-2 pr-12 border rounded focus:outline-none focus:ring-2 focus:ring-teal-500 sm:text-sm"
+                          placeholder="Enter your password"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => togglePasswordVisibility("password")}
+                          className="absolute inset-y-0 right-0 flex items-center px-3 text-sm font-medium text-gray-600"
+                        >
+                          {showPassword ? (
+                            <EyeIcon className="w-5 h-5" />
+                          ) : (
+                            <EyeSlashIcon className="w-5 h-5" />
+                          )}
+                        </button>
+                      </div>
                       {formikSignup.touched.password &&
                       formikSignup.errors.password ? (
-                        <div className="text-red-500">
+                        <div className="text-red-500 text-sm">
                           {formikSignup.errors.password}
                         </div>
                       ) : null}
@@ -382,16 +419,31 @@ const Signup = () => {
                       >
                         Confirm Password:
                       </label>
-                      <input
-                        type="password"
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        onChange={formikSignup.handleChange}
-                        onBlur={formikSignup.handleBlur}
-                        value={formikSignup.values.confirmPassword}
-                        className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        placeholder="Re-enter your password"
-                      />
+                      <div className="relative">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          id="confirmPassword"
+                          name="confirmPassword"
+                          onChange={formikSignup.handleChange}
+                          onBlur={formikSignup.handleBlur}
+                          value={formikSignup.values.confirmPassword}
+                          className="w-full px-4 py-2 pr-12 border rounded focus:outline-none focus:ring-2 focus:ring-teal-500 sm:text-sm"
+                          placeholder="Re-enter your password"
+                        />
+                        <button
+                          type="button"
+                          onClick={() =>
+                            togglePasswordVisibility("confirmPassword")
+                          }
+                          className="absolute inset-y-0 right-0 flex items-center px-3 text-sm font-medium text-gray-600"
+                        >
+                          {showPassword ? (
+                            <EyeIcon className="w-5 h-5" />
+                          ) : (
+                            <EyeSlashIcon className="w-5 h-5" />
+                          )}
+                        </button>
+                      </div>
                       {formikSignup.touched.confirmPassword &&
                       formikSignup.errors.confirmPassword ? (
                         <div className="text-red-500">
