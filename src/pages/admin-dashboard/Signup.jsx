@@ -112,7 +112,7 @@ const Signup = () => {
               autoClose: 5000,
             });
             setTimeout(() => {
-              // navigate("/admin-dashboard/:category");
+              navigate("/admin-dashboard/:category");
             }, 3000);
           }
         })
@@ -198,8 +198,8 @@ const Signup = () => {
                       placeholder="you@example.com"
                     />
                     {formikLogin.touched.email && formikLogin.errors.email ? (
-                      <div className="text-red-500">
-                        {formikLogin.errors.email}
+                      <div className="text-red-500 text-sm">
+                        {formikLogin.errors.email}.
                       </div>
                     ) : null}
                   </div>
@@ -233,7 +233,7 @@ const Signup = () => {
                     </div>
                     {formikLogin.touched.password &&
                     formikLogin.errors.password ? (
-                      <div className="text-red-500 text-sm">
+                      <div className="text-red-500  text-sm">
                         {formikLogin.errors.password}
                       </div>
                     ) : null}
@@ -278,7 +278,7 @@ const Signup = () => {
                       />
                       {formikSignup.touched.first_name &&
                       formikSignup.errors.first_name ? (
-                        <div className="text-red-600">
+                        <div className="text-red-600 text-sm">
                           {formikSignup.errors.first_name}
                         </div>
                       ) : null}
@@ -302,7 +302,7 @@ const Signup = () => {
                       />
                       {formikSignup.touched.last_name &&
                       formikSignup.errors.last_name ? (
-                        <div className="text-red-600">
+                        <div className="text-red-600 text-sm">
                           {formikSignup.errors.last_name}
                         </div>
                       ) : null}
@@ -324,7 +324,7 @@ const Signup = () => {
                       placeholder="you@example.com"
                     />
                     {formikSignup.touched.email && formikSignup.errors.email ? (
-                      <div className="text-red-500">
+                      <div className="text-red-600 text-sm">
                         {formikSignup.errors.email}
                       </div>
                     ) : null}
@@ -345,7 +345,7 @@ const Signup = () => {
                     />
                     {formikSignup.touched.address &&
                     formikSignup.errors.address ? (
-                      <div className="text-red-500">
+                      <div className="text-red-600 text-sm">
                         {formikSignup.errors.address}
                       </div>
                     ) : null}
@@ -370,7 +370,7 @@ const Signup = () => {
                     />
                     {formikSignup.touched.phone_number &&
                     formikSignup.errors.phone_number ? (
-                      <div className="text-red-500">
+                      <div className="text-red-600 text-sm">
                         {formikSignup.errors.phone_number}
                       </div>
                     ) : null}
@@ -406,7 +406,7 @@ const Signup = () => {
                       </div>
                       {formikSignup.touched.password &&
                       formikSignup.errors.password ? (
-                        <div className="text-red-500 text-sm">
+                        <div className="text-red-600 text-sm">
                           {formikSignup.errors.password}
                         </div>
                       ) : null}
@@ -446,7 +446,7 @@ const Signup = () => {
                       </div>
                       {formikSignup.touched.confirmPassword &&
                       formikSignup.errors.confirmPassword ? (
-                        <div className="text-red-500">
+                        <div className="text-red-600 text-sm">
                           {formikSignup.errors.confirmPassword}
                         </div>
                       ) : null}
