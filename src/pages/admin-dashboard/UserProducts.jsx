@@ -5,7 +5,17 @@ import HashLoader from 'react-spinners/HashLoader';
 
 const UserProducts = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
+
+  const mapContainerStyle = {
+    width: "100%",
+    height: "400px",
+  };
+
+  const center = {
+    lat: 8.1339,
+    lng: 4.2436,
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -20,13 +30,10 @@ const UserProducts = () => {
           }
         );
         setProducts(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching user products:", error);
       } finally {
-        setTimeout(() => {
-          setLoading(false);   
-        }, 5000);
+        setLoading(false);
       }
     };
 
@@ -40,71 +47,73 @@ const UserProducts = () => {
           <HashLoader color="#36d7b7" />
         </div>
       ) : (
-        <>
-      
-        <div className="p-3 ">
+        <div className="w-full">
+          {/* Profile Header */}
+          <div className="flex items-center">
+            <div className="w-20 h-20">
+              <img 
+                src="https://i.pinimg.com/236x/14/12/38/141238d515d973036dcb44078901a002.jpg" 
+                alt="Profile Picture" 
+                className="rounded-full w-full h-full object-cover" 
+              />
+            </div>
+            <div className="ml-4">
+              <h2 className="text-2xl font-bold text-primary">Replace with user name</h2>
+              <p className="text-gray-600 text-sm">E-commerce Website</p>
+              <p className="text-gray-600 text-sm">Selective free resources for designers @unblast.</p>
+              <p className="text-gray-600 text-sm">Melbourne, Victoria, Australia</p>
+              <button className="mt-2 bg-primary text-white py-1 px-4 rounded">
+                Follow
+              </button>
+              <div className="mt-2 flex space-x-4 text-sm">
+                <span><strong>371</strong> posts</span>
+                <span><strong>14.4K</strong> followers</span>
+                <span><strong>272</strong> following</span>
+              </div>
+            </div>
+          </div>
 
-          <div className="">
-            <div className="mb-4">
-        <div>
-          <h2 className="text-2xl font-bold mb-6">My Products</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-4 ">
-            {products.map((product) => (
-              <div key={product.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                  <img
-                    className="rounded-t-lg w-full h-48 object-cover"
-                    src={product.imagePath}
-                    alt={product.productName}
-                  />
-                </a>
-                <div className="px-3 pb-5">
-                  <a href="#">
-                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                      {product.productName}
-                    </h5>
-                    <p className="text-gray-700 dark:text-gray-400">{product.productDescription}</p>
-                  </a>
-                  <div className="flex items-center mt-2.5 mb-5">
-                    <div className="flex items-center space-x-1 rtl:space-x-reverse">
-                      {[...Array(5)].map((_, index) => (
-                        <svg
-                          key={index}
-                          className={`w-4 h-4 ${index < 4 ? "text-yellow-300" : "text-gray-200 dark:text-gray-600"}`}
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                        >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">
-                      5.0
-                    </span>
-                  </div>
-                  <div className="flex items-center  justify-between">
-                    <a
-                      href="#"
-                      className="text-white w-full bg-green-700 hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 "
-                    >
-                      View in market
-                    </a>
-                  </div>
-                </div>
+          {/* Profile Highlights */}
+          <div className="flex justify-around mt-6">
+            {Array(4).fill("").map((_, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-primary rounded-full mx-auto"></div>
+                <span className="text-sm">Text 0{index + 1}</span>
               </div>
             ))}
-            </div>
           </div>
-                
-            </div>
-          </div>
+
+          {/* Profile Posts */}
+          <div className="grid grid-cols-3 gap-2 mt-4">
+            {products.map((product, index) => (
+              <div key={index} className="aspect-square">
+                <img
+                  src={product.imagePath || 'placeholder-image-url'}
+                  alt={product.productName}
+                  className="w-full h-36 object-cover rounded-lg"
+                />
+              </div>
+            ))}
+          </div>  
+          {/* Google Map */}
+    <div className="text-center mt-6">
+  <section className="relative">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.113355594757!2d4.265083074775671!3d8.132853283590624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1037991cc01139c9%3A0x4f6d72f0f58b9b80!2sOgbomosho%20Oyo!5e0!3m2!1sen!2sng!4v1691930295633!5m2!1sen!2sng"
+      width="100%"
+      height="450"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+    ></iframe>
+  </section>
+</div>
+
+
         </div>
-        </>
       )}
     </div>
-  );
+  );  
 };
 
 export default UserProducts;

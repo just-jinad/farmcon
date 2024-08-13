@@ -61,6 +61,7 @@ const Marketing = () => {
                   <p className="mt-2 text-lg font-bold text-gray-800">${product.price.toFixed(2)}</p>
                   <p className="mt-2 text-sm text-gray-500">Location: {product.location}</p>
                   <p className="mt-2 text-sm text-gray-500">Availability: {product.availability}</p>
+                  <p className="mt-2 text-sm text-gray-500">Phone: {product.phoneNumber}</p> {/* Display phone number */}
                   <div className="mt-6 flex justify-center gap-2">
                     <button
                       className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none"
@@ -73,6 +74,12 @@ const Marketing = () => {
                       type="button"
                     >
                       <i className="fab fa-facebook-f"></i>
+                    </button>
+                    <button
+                      className="bg-green-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none"
+                      type="button"
+                    >
+                      <i className="fab fa-whatsapp"></i> {/* WhatsApp icon */}
                     </button>
                   </div>
                 </div>
