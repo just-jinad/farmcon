@@ -5,6 +5,7 @@ import HashLoader from 'react-spinners/HashLoader';
 const Marketing = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -26,22 +27,51 @@ const Marketing = () => {
     fetchProducts();
   }, []);
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredProducts = products.filter((product) =>
+    product.productName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="p-6 min-h-screen">
-      <div className="flex mb-6 gap-6 flex-wrap lg:flex-nowrap justify-between">
-        <div className="w-full">
-          {/* <Column /> */}
-        </div>
-        <div className="w-full">
-          {/* <Pie /> */}
+      <div className="flex justify-center mb-6">
+        <div className="relative w-full max-w-lg">
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={handleSearch}
+            className="w-full py-2 pl-10 pr-4 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500"
+          />
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+            <svg
+              className="w-5 h-5 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12.9 14.32a8 8 0 111.414-1.414l4.35 4.35a1 1 0 01-1.414 1.414l-4.35-4.35zm-4.9 2.18a6 6 0 100-12 6 6 0 000 12z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+          <button className="absolute right-0 top-0 mt-2 mr-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none">
+            Search
+          </button>
         </div>
       </div>
       <div className="w-full">
         {loading ? (
-          <HashLoader />
+          <div className="flex justify-center items-center">
+            <HashLoader />
+          </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product, index) => (
+            {filteredProducts.map((product, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
@@ -61,7 +91,7 @@ const Marketing = () => {
                   <p className="mt-2 text-lg font-bold text-gray-800">${product.price.toFixed(2)}</p>
                   <p className="mt-2 text-sm text-gray-500">Location: {product.location}</p>
                   <p className="mt-2 text-sm text-gray-500">Availability: {product.availability}</p>
-                  <p className="mt-2 text-sm text-gray-500">Phone: {product.phoneNumber}</p> {/* Display phone number */}
+                  <p className="mt-2 text-sm text-gray-500">Phone: {product.phoneNumber}</p>
                   <div className="mt-6 flex justify-center gap-2">
                     <button
                       className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none"
@@ -79,7 +109,7 @@ const Marketing = () => {
                       className="bg-green-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none"
                       type="button"
                     >
-                      <i className="fab fa-whatsapp"></i> {/* WhatsApp icon */}
+                      <i className="fab fa-whatsapp"></i>
                     </button>
                   </div>
                 </div>

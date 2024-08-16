@@ -47,7 +47,7 @@ const UserProducts = () => {
           <HashLoader color="#36d7b7" />
         </div>
       ) : (
-        <div className="w-full">
+        <div className="w-full bg-white p-3">
           {/* Profile Header */}
           <div className="flex items-center">
             <div className="w-20 h-20">
@@ -58,11 +58,11 @@ const UserProducts = () => {
               />
             </div>
             <div className="ml-4">
-              <h2 className="text-2xl font-bold text-primary">Replace with user name</h2>
-              <p className="text-gray-600 text-sm">E-commerce Website</p>
-              <p className="text-gray-600 text-sm">Selective free resources for designers @unblast.</p>
-              <p className="text-gray-600 text-sm">Melbourne, Victoria, Australia</p>
-              <button className="mt-2 bg-primary text-white py-1 px-4 rounded">
+              <h2 className="text-xl font-bold text-primary">Jinad Tope</h2>
+              <p className="text-gray-600 text-sm">Industrial Farmer and Entrepreneur</p>
+              <p className="text-gray-600 text-sm">Selective free resources for farmers @farmCOn.</p>
+              <p className="text-gray-600 text-sm">ogbomoso, Oyo state, Nigeria</p>
+              <button className="mt-2 bg-teal-600 text-white py-1 px-4 rounded">
                 Follow
               </button>
               <div className="mt-2 flex space-x-4 text-sm">
@@ -90,7 +90,7 @@ const UserProducts = () => {
                 <img
                   src={product.imagePath || 'placeholder-image-url'}
                   alt={product.productName}
-                  className="w-full h-36 object-cover rounded-lg"
+                  className="h-36 object-cover rounded-lg"
                 />
               </div>
             ))}

@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect } from 'react';
 import Footer from "../../components/frontcomponent/Footer";
+import { TranslationContext } from '../../components/frontcomponent/TranslationProvider';
 
 
 const Home = () => {
+  const { translations, switchLanguage } = useContext(TranslationContext);
+
+  useEffect(() => {
+      switchLanguage('en'); // Load English translations initially
+    }, []);
   return (
     <>
       <main>
+      <button onClick={() => switchLanguage('yo')}>Switch to Yoruba</button>
+      <button onClick={() => switchLanguage('en')}>Switch to English</button>
         <div
           className="relative pt-16 pb-32 flex content-center items-center justify-center"
           style={{
@@ -29,11 +37,10 @@ const Home = () => {
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
                   <h1 className="text-white font-semibold text-5xl">
-                    Your story starts with us.
+                  {translations.welcome_message || 'Loading...'}
                   </h1>
                   <p className="mt-4 text-lg text-gray-300">
-                    Welcome to FarmCon, your number one online platform for
-                    buying and selling farm produce.
+                  {translations.welcome_message2 || 'Loading...'}
                   </p>
                 </div>
               </div>
@@ -67,13 +74,10 @@ const Home = () => {
                       <i className="fas fa-shopping-cart"></i>
                     </div>
                     <h6 className="text-xl font-semibold text-teal-600">
-                      Effortless Product Sales
+                      {translations.card1Title || 'loading...'}
                     </h6>
                     <p className="mt-2 mb-4 text-black">
-                      With FarmCon, selling your goods is quick, easy, and
-                      hassle-free. Our user-friendly platform allows you to
-                      upload photos of your produce, set your prices, and
-                      connect with eager buyers from across Nigeria.
+                     {translations.card1Description || 'loading...'}
                     </p>
                   </div>
                 </div>
@@ -86,14 +90,10 @@ const Home = () => {
                       <i className="fas fa-seedling"></i>
                     </div>
                     <h6 className="text-xl text-teal-600 font-semibold">
-                      Supporting Sustainable Agriculture
+                    {translations.card2Title || 'loading...'}
                     </h6>
                     <p className="mt-2 mb-4 text-black">
-                      FarmCon is committed to empowering Nigerian farmers by
-                      providing them with a direct avenue to showcase and sell
-                      their produce. We believe in the importance of supporting
-                      local agriculture and helping farmers thrive in their
-                      communities.
+                    {translations.card2Description || 'loading...'}
                     </p>
                   </div>
                 </div>
@@ -106,13 +106,10 @@ const Home = () => {
                       <i className="fas fa-headset"></i>
                     </div>
                     <h6 className="text-xl text-teal-600 font-semibold">
-                      24/7 Support
+                      {translations.card3Title || 'loading...'}
                     </h6>
                     <p className="mt-2 mb-4 text-black">
-                      As a FarmCon member, you'll have access to a wealth of
-                      resources and support to help you succeed. From marketing
-                      tips to agricultural advice, we're here to help you grow
-                      your business and achieve your goals.
+                    {translations.card3Description || 'loading...'}
                     </p>
                   </div>
                 </div>
@@ -125,18 +122,13 @@ const Home = () => {
                   <i className="fas fa-user-friends text-xl"></i>
                 </div>
                 <h3 className="text-3xl mb-2 font-semibold leading-normal text-teal-600 ">
-                  Working with us is a pleasure
+                  {translations.homeSec1Title || 'loading...'}
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                  Navigate FarmCon’s user-friendly platform with ease. Our
-                  simple interface makes it easy to upload listings, connect
-                  with buyers, and manage your farm business efficiently, even
-                  with just one person.
+                {translations.homeSec1Description || 'loading...'}
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-                  List your farm produce quickly and effortlessly on FarmCon’s
-                  platform. With just a few simple steps, you can showcase your
-                  goods to potential buyers without any hassle.
+                {translations.homeSec1Description2 || 'loading...'}
                 </p>
               </div>
 
@@ -163,14 +155,8 @@ const Home = () => {
                         className="text-teal-600 fill-current"
                       ></polygon>
                     </svg>
-                    <h4 className="text-xl font-bold text-white">
-                      Top Notch Services
-                    </h4>
-                    <p className="text-md font-light mt-2 text-white">
-                      The Arctic Ocean freezes every winter and much of the
-                      sea-ice then thaws every summer, and that process will
-                      continue whatever happens.
-                    </p>
+                  
+                  
                   </blockquote>
                 </div>
               </div>
