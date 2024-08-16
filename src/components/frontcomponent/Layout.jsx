@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from "../frontcomponent/Navbar";
 import { Outlet } from 'react-router-dom';
+import Navba from '../frontcomponent/Navbar';
 
-const Layout = ({ onLoginClick }) => {
+const Layout = ({children, onLoginClick }) => {
   return (
    <>
-       <Navbar onLoginClick={onLoginClick}/>
+       <Navba  onLoginClick={onLoginClick} />
         <Outlet/>
    </>
   )

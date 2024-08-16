@@ -1,11 +1,12 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Navbar, Dropdown } from "flowbite-react";
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/intertwined lines.png';
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Modal from 'react-modal';
+import { TranslationContext } from './TranslationProvider';
 
 const Navba = ({ onLoginClick }) => {
   let navigate = useNavigate();
@@ -20,6 +21,10 @@ const Navba = ({ onLoginClick }) => {
     closeModal();
     navigate('/login');
   };
+
+  
+  const { switchLanguage } = useContext(TranslationContext); // Access switchLanguage from context
+
 
   return (
     <>
@@ -68,6 +73,14 @@ const Navba = ({ onLoginClick }) => {
               </Link>
             </Dropdown.Item>
           </Dropdown>
+          <div className="ml-auto flex space-x-4">
+            <button onClick={() => switchLanguage('en')} className="text-teal-700">
+              English
+            </button>
+            <button onClick={() => switchLanguage('yo')} className="text-teal-700">
+              Yoruba
+            </button>
+          </div>
         </Navbar.Collapse>
       </Navbar>
 

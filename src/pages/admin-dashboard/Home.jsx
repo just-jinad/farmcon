@@ -12,8 +12,6 @@ const Home = () => {
   return (
     <>
       <main>
-      <button onClick={() => switchLanguage('yo')}>Switch to Yoruba</button>
-      <button onClick={() => switchLanguage('en')}>Switch to English</button>
         <div
           className="relative pt-16 pb-32 flex content-center items-center justify-center"
           style={{
