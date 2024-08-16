@@ -21,6 +21,12 @@ const TranslationProvider = ({ children }) => {
       'homeSec1Title',
       'homeSec1Description',
       'homeSec1Description2',
+      'homeSec2Title',
+      'homeSec2Description',
+      'homeSec2Aim',
+      'homeSec2Aim2',
+      'homeSec2Aim3',
+      'homeSec3',
 
       'contact_us', 
       'description']; // Add your keys here

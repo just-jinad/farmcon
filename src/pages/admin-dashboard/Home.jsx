@@ -200,12 +200,11 @@ const Home = () => {
                     <i className="fas fa-rocket text-xl"></i>
                   </div>
                   <h3 className="text-3xl font-semibold text-teal-600">
-                    A growing business
+                   {translations.homeSec2Title || 'loading...'}
                   </h3>
                   <p className="mt-4 text-lg leading-relaxed text-black">
-                    FarmCon helps Local farmers and industrial farmers alike
-                    reach a larger customer base thereby giving a much needed
-                    boost to business.
+                  {translations.homeSec2Description || 'loading...'}
+
                   </p>
                   <ul className="list-none mt-6">
                     <li className="py-2">
@@ -217,7 +216,7 @@ const Home = () => {
                         </div>
                         <div>
                           <h4 className="text-black">
-                            Empowering Local Farmers
+                          {translations.homeSec2Aim || 'loading...'}
                           </h4>
                         </div>
                       </div>
@@ -231,7 +230,8 @@ const Home = () => {
                         </div>
                         <div>
                           <h4 className="text-black">
-                            Transparent Transactions
+                          {translations.homeSec2Aim2 || 'loading...'}
+
                           </h4>
                         </div>
                       </div>
@@ -244,7 +244,10 @@ const Home = () => {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-black">24/7 Support</h4>
+                          <h4 className="text-black">
+                          {translations.homeSec2Aim3 || 'loading...'}
+
+                          </h4>
                         </div>
                       </div>
                     </li>
@@ -260,7 +263,7 @@ const Home = () => {
             <div className="flex flex-wrap justify-center text-center mb-24">
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-2xl font-semibold text-teal-600">
-                  Some Listed Products
+                 {translations.homeSec3 || 'loading...'}
                 </h2>
               </div>
             </div>
