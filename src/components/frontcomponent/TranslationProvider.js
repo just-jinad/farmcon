@@ -27,6 +27,16 @@ const TranslationProvider = ({ children }) => {
       'homeSec2Aim2',
       'homeSec2Aim3',
       'homeSec3',
+      'signup',
+      'login',
+      'logout',
+      'about',
+      'aboutChild',
+      'aboutChild2',
+      'aboutChild3',
+      'logoutQue',
+      'logoutQue2',
+      'logoutQue3',
 
       'contact_us', 
       'description']; // Add your keys here

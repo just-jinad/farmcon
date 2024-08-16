@@ -1,12 +1,12 @@
 "use client";
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import { Navbar, Dropdown } from "flowbite-react";
-import { Link } from 'react-router-dom';
-import logo from '../../assets/images/intertwined lines.png';
+import { Link } from "react-router-dom";
+import logo from "../../assets/images/intertwined lines.png";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import Modal from 'react-modal';
-import { TranslationContext } from './TranslationProvider';
+import Modal from "react-modal";
+import { TranslationContext } from "./TranslationProvider";
 
 const Navba = ({ onLoginClick }) => {
   let navigate = useNavigate();
@@ -16,69 +16,87 @@ const Navba = ({ onLoginClick }) => {
   const closeModal = () => setModalIsOpen(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('jwtToken');
-    toast('Logged out successfully', { type: 'success' });
+    localStorage.removeItem("jwtToken");
+    toast("Logged out successfully", { type: "success" });
     closeModal();
-    navigate('/login');
+    navigate("/login");
   };
 
-  
-  const { switchLanguage } = useContext(TranslationContext); // Access switchLanguage from context
+  const { switchLanguage, translations } = useContext(TranslationContext); // Access switchLanguage from context
 
-
+  useEffect(() => {
+    switchLanguage("en"); 
+  }, []);
   return (
     <>
       <Navbar fluid rounded className="py-2 px-4">
         <div className="flex items-center">
           <Navbar.Brand as={Link} to="/" className="relative flex items-center">
             <span className="text-xl font-bold text-teal-700">FarmCon</span>
-            <img 
-              src={logo} 
-              alt="farmcon logo" 
-              className="ml-4 h-8 w-auto" 
-              style={{ marginLeft: '10px' }}
+            <img
+              src={logo}
+              alt="farmcon logo"
+              className="ml-4 h-8 w-auto"
+              style={{ marginLeft: "10px" }}
             />
           </Navbar.Brand>
         </div>
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Navbar.Link as={Link} to="/signup">
-            <button className="bg-teal-600 hover:bg-white hover:text-teal-600 hover:font-bold border-gray-200 text-white text-sm border rounded-xl p-2"> 
-              Get Started
+            <button className="bg-teal-600 hover:bg-white hover:text-teal-600 hover:font-bold border-gray-200 text-white text-sm border rounded-xl p-2">
+              {translations.signup || 'loading...'}
             </button>
           </Navbar.Link>
-        
-          <Navbar.Link className="text-teal-700 mt-2 py-1 md:py-0" onClick={onLoginClick}>
-            Login
+
+          <Navbar.Link
+            className="text-teal-700 mt-2 py-1 md:py-0"
+            onClick={onLoginClick}
+          >
+            {translations.login || 'loading...'}
           </Navbar.Link>
-          
-          <Navbar.Link href="#" onClick={openModal} className="text-teal-700 mt-2 py-1 md:py-0">
-            Log out
+
+          <Navbar.Link
+            href="#"
+            onClick={openModal}
+            className="text-teal-700 mt-2 py-1 md:py-0"
+          >
+           {translations.logout || 'loading...'}
           </Navbar.Link>
-          
-          <Dropdown label="About us" inline className="text-teal-700 mt-2 py-1 md:py-0">
+
+          <Dropdown
+            label={translations.about || 'loading...'}
+            inline
+            className="text-teal-700 mt-2 py-1 md:py-0"
+          >
             <Dropdown.Item>
-              <Link className='text-teal-700 text-success' to="/about">
-                Contact Us
+              <Link className="text-teal-700 text-success" to="/about">
+               {translations.aboutChild || 'loading...'}
               </Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link className='text-success' to="/about">
-                Our People
+              <Link className="text-success" to="/about">
+              {translations.aboutChild2 || 'loading...'}
               </Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link className='text-success' to="/faq">
-                FAQ
+              <Link className="text-success" to="/faq">
+              {translations.aboutChild3 || 'loading...'}
               </Link>
             </Dropdown.Item>
           </Dropdown>
           <div className="ml-auto flex space-x-4">
-            <button onClick={() => switchLanguage('en')} className="text-teal-700">
+            <button
+              onClick={() => switchLanguage("en")}
+              className="text-teal-700"
+            >
               English
             </button>
-            <button onClick={() => switchLanguage('yo')} className="text-teal-700">
-              Yoruba
+            <button
+              onClick={() => switchLanguage("yo")}
+              className="text-teal-700"
+            >
+              Yorùbá
             </button>
           </div>
         </Navbar.Collapse>
@@ -93,19 +111,21 @@ const Navba = ({ onLoginClick }) => {
         ariaHideApp={false}
       >
         <div className="bg-white rounded-lg p-6 w-96 text-center">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Are you sure you want to logout?</h2>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+            {translations.logoutQue || 'loading...'}
+          </h2>
           <div className="flex justify-around mt-4">
             <button
               onClick={handleLogout}
               className="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700"
             >
-              Yes, Logout
+             {translations.logoutQue2 || 'loading...'}
             </button>
             <button
               onClick={closeModal}
               className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400"
             >
-              Cancel
+             {translations.logoutQue3 || 'loading...'}
             </button>
           </div>
         </div>
