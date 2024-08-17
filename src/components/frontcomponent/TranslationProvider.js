@@ -37,6 +37,15 @@ const TranslationProvider = ({ children }) => {
       'logoutQue',
       'logoutQue2',
       'logoutQue3',
+      // Signup translations
+      'signupWords',
+      'typewriter',
+      'question1',
+      'signupCall',
+      'question2',
+      'email',
+      'password',
+
 
       'contact_us', 
       'description']; // Add your keys here

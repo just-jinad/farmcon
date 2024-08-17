@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -8,8 +8,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import Typewriter from "../../components/frontcomponent/Typewriter";
+import { TranslationContext } from "../../components/frontcomponent/TranslationProvider";
 
 const Signup = () => {
+  const { switchLanguage, translations } = useContext(TranslationContext); // Access switchLanguage from context
+
+  useEffect(() => {
+    switchLanguage("en"); 
+  }, []);
   // Set the default view to the registration form
   const [isSignIn, setIsSignIn] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -133,10 +139,10 @@ const Signup = () => {
       <ToastContainer />
       {/* Left Section */}
       <div className="hidden md:flex w-1/2 bg-teal-700 text-white flex-col justify-center items-start p-12">
-        <h1 className="text-4xl font-bold mb-4">Grow. Farm. Sell.</h1>
+        <h1 className="text-4xl font-bold mb-4">{translations.signupWords || 'loading..'}</h1>
         <p className="mb-6">
           <Typewriter
-            text="FarmCon is committed to empowering Nigerian farmers by providing them with a direct avenue to showcase and sell their produce. We believe in the importance of supporting local agriculture and helping farmers thrive in their communities."
+            text={translations.typewriter || "loading..."}
             speed={30}
           />
         </p>
@@ -149,25 +155,25 @@ const Signup = () => {
             {isSignIn ? (
               <>
                 <span className="text-gray-500 mr-2">
-                  Don't have an account?
+                  {translations.question1 || 'loading...'}
                 </span>
                 <button
                   onClick={() => setIsSignIn(false)}
                   className="bg-teal-700 text-white px-4 py-2 rounded"
                 >
-                  Sign Up
+                  {translations.signupCall || "loading..."}
                 </button>
               </>
             ) : (
               <>
                 <span className="text-gray-500 mr-2">
-                  Already have an account?
+                {translations.question2 || "loading..."}
                 </span>
                 <button
                   onClick={() => setIsSignIn(true)}
                   className="bg-teal-700 text-white px-4 py-2 rounded"
                 >
-                  Sign In
+                 {translations.login || "loading..."}
                 </button>
               </>
             )}
@@ -185,7 +191,7 @@ const Signup = () => {
                 <form id="loginForm" onSubmit={formikLogin.handleSubmit}>
                   <div className="mb-4">
                     <label htmlFor="email" className="block text-gray-700">
-                      Email address:
+                      {translations.email || 'loading'}
                     </label>
                     <input
                       type="email"
@@ -206,7 +212,8 @@ const Signup = () => {
 
                   <div className="mb-4">
                     <label htmlFor="password" className="block text-gray-700">
-                      Password:
+                    {translations.password || 'loading'}
+
                     </label>
                     <div className="relative">
                       <input
@@ -243,7 +250,7 @@ const Signup = () => {
                     type="submit"
                     className="w-full bg-teal-700 text-white font-semibold px-4 py-2 rounded shadow hover:bg-teal-600 transition"
                   >
-                    Sign In
+                    {translations.login || 'loading...'}
                   </button>
                 </form>
               </motion.div>
