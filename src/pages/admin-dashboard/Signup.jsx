@@ -108,17 +108,19 @@ const Signup = () => {
       axios
         .post("http://localhost:8888/login", values)
         .then((response) => {
-          const { token } = response.data;
+          const { token, user_id } = response.data; // Assuming the user ID is returned in the response
 
           if (token) {
             localStorage.setItem("jwtToken", JSON.stringify(token));
+            localStorage.setItem("userId", JSON.stringify(user_id));
             console.log(token);
+            console.log(user_id);
             toast.success("Login successful", {
               position: "top-center",
               autoClose: 5000,
             });
             setTimeout(() => {
-              navigate("/admin-dashboard/:category");
+              // navigate("/admin-dashboard/:category");
             }, 3000);
           }
         })

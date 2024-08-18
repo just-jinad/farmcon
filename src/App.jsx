@@ -11,6 +11,8 @@ import PrivateRoute from "./components/frontcomponent/PrivateRoute";
 import { LanguageProvider, useLanguage } from "./components/frontcomponent/LanguageContext";
 import Test from "./pages/admin-dashboard/test";
 import { TranslationProvider } from "./components/frontcomponent/TranslationProvider";
+import Chat from "./pages/admin-dashboard/Chat";
+import ChatDashboard from "./pages/admin-dashboard/ChatDashboard";
 
 
 
@@ -45,12 +47,15 @@ function App() {
       <Routes>
         <Route element={<Layout onLoginClick={handleNavigateToLogin} />}>
           <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
         </Route>
 
 
-        <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/test" element={< Test/>} />
+        <Route path="/chat" element={< Chat/>} />
+        <Route path="/chat_dashboard" element={< ChatDashboard />} />
+
         
         <Route path="/admin-dashboard/:category" element={
           <PrivateRoute>
