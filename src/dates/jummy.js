@@ -29,8 +29,8 @@ export let Data = [
             },
             {
                 icon: 'fa-regular fa-floppy-disk',
-                text: 'Saved Reports',
-                url: 'main'
+                text: 'Chat with seller',
+                url: 'chat'
             },
             {
                 icon: 'fa-regular fa-comment-dots',

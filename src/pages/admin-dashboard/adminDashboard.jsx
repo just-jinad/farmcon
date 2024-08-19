@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom'
 import { Data } from '../../dates/jummy'
 import HashLoader from "react-spinners/HashLoader";
 import UserProducts from "../admin-dashboard/UserProducts"
+import Chat from './Chat'
 
 const AdminDashboard = () => {
   const [loading, setLoading] = useState(true)
@@ -48,6 +49,9 @@ const AdminDashboard = () => {
           }
            {
             category === 'userprofile' && <UserProducts/>
+          }
+           {
+            category === 'chat' && <Chat/>
           }
         </div>
       </div>
