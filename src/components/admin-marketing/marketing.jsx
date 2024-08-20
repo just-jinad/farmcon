@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import HashLoader from 'react-spinners/HashLoader';
+import { FaRegCopy } from "react-icons/fa6";
 
 const Marketing = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [copyStatus, setCopyStatus] = useState({}); // To track copy status for each product
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -16,6 +18,7 @@ const Marketing = () => {
             Authorization: `Bearer ${token}`,
           },
         });
+        console.log(response.data);
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -34,6 +37,15 @@ const Marketing = () => {
   const filteredProducts = products.filter((product) =>
     product.productName.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const copyToClipboard = (text, id) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        setCopyStatus({ ...copyStatus, [id]: 'Copied!' });
+        setTimeout(() => setCopyStatus({ ...copyStatus, [id]: '' }), 2000); // Clear message after 2 seconds
+      })
+      .catch((err) => console.error('Failed to copy: ', err));
+  };
 
   return (
     <div className="p-6 min-h-screen">
@@ -91,7 +103,33 @@ const Marketing = () => {
                   <p className="mt-2 text-lg font-bold text-gray-800">${product.price.toFixed(2)}</p>
                   <p className="mt-2 text-sm text-gray-500">Location: {product.location}</p>
                   <p className="mt-2 text-sm text-gray-500">Availability: {product.availability}</p>
-                  <p className="mt-2 text-sm text-gray-500">Phone: {product.phoneNumber}</p>
+                  
+                  <div className="flex items-center text-center">
+                    <p className="mt-2 text-sm text-gray-500">Phone: {product.phone_number}</p>
+                    <button
+                      onClick={() => copyToClipboard(product.phone_number, `phone-${index}`)}
+                      className="ml-2 text-blue-600"
+                    >
+                     <FaRegCopy className='text-gray-500'/>
+                    </button>
+                    {copyStatus[`phone-${index}`] && (
+                      <span className="ml-2 text-green-500">{copyStatus[`phone-${index}`]}</span>
+                    )}
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <p className="mt-2 text-sm text-gray-500">user_ID: {product.user_id}</p>
+                    <button
+                      onClick={() => copyToClipboard(product.user_id, `user-${index}`)}
+                      className="ml-2 text-blue-600"
+                    >
+                    <FaRegCopy className='text-gray-500' />
+                    </button>
+                    {copyStatus[`user-${index}`] && (
+                      <span className="ml-2 text-green-500">{copyStatus[`user-${index}`]}</span>
+                    )}
+                  </div>
+
                   <div className="mt-6 flex justify-center gap-2">
                     <button
                       className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none"
