@@ -120,7 +120,7 @@ const Signup = () => {
               autoClose: 5000,
             });
             setTimeout(() => {
-              // navigate("/admin-dashboard/:category");
+              navigate("/admin-dashboard/:category");
             }, 3000);
           }
         })

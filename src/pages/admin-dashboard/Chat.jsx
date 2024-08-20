@@ -148,7 +148,7 @@ function Chat() {
                   <div
                     className={`p-3 rounded-lg max-w-xs ${
                       isCurrentUser
-                        ? "bg-green-500 text-white text-right"
+                        ? "bg-teal-500 text-white text-right"
                         : "bg-gray-200 text-black text-left"
                     }`}
                   >
@@ -181,7 +181,7 @@ function Chat() {
         <button
           onClick={sendMessage}
           disabled={!chatId}
-          className="ml-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          className="ml-4 bg-teal-900 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
         >
           Send
         </button>
