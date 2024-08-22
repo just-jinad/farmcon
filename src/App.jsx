@@ -47,11 +47,11 @@ function App() {
       <Routes>
         <Route element={<Layout onLoginClick={handleNavigateToLogin} />}>
           <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
         </Route>
 
 
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/test" element={< Test/>} />
         <Route path="/chat" element={< Chat/>} />
         <Route path="/chat_dashboard" element={< ChatDashboard />} />
