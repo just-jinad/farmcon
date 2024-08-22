@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import HashLoader from 'react-spinners/HashLoader';
+import BeatLoader from "react-spinners/BeatLoader";
 import { FaRegCopy } from "react-icons/fa6";
 
 const Marketing = () => {
@@ -79,7 +79,7 @@ const Marketing = () => {
       <div className="w-full">
         {loading ? (
           <div className="flex justify-center items-center">
-            <HashLoader />
+               <BeatLoader color="#036672" />
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

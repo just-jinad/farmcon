@@ -6,7 +6,7 @@ import { Context } from '../../context/index'
 import Marketing from '../../components/admin-marketing/marketing'
 import { useParams } from 'react-router-dom'
 import { Data } from '../../dates/jummy'
-import HashLoader from "react-spinners/HashLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 import UserProducts from "../admin-dashboard/UserProducts"
 import Chat from './Chat'
 
@@ -32,7 +32,7 @@ const AdminDashboard = () => {
     {
       loading ? (
         <div className="flex items-center justify-center h-screen">
-        <HashLoader color="#036672" />
+        <BeatLoader color="#036672" />
       </div>
       ) : (
 

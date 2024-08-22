@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import HashLoader from "react-spinners/HashLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 import ClipLoader from "react-spinners/ClipLoader"; // Import ClipLoader for button loader
 
 const UserProducts = () => {
@@ -102,7 +102,8 @@ const UserProducts = () => {
     <div className="container mx-auto p-4">
       {loading ? (
         <div className="flex justify-center items-center h-screen">
-          <HashLoader color="#36d7b7" />
+             <BeatLoader color="#036672" />
+         
         </div>
       ) : (
         <div className="w-full bg-white p-3">
