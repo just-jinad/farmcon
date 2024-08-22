@@ -13,7 +13,7 @@ const Marketing = () => {
     const fetchProducts = async () => {
       try {
         const token = JSON.parse(localStorage.getItem('jwtToken'));
-        const response = await axios.get('http://localhost:8888/products', {
+        const response = await axios.get('https://myproject-backend-2jt1.onrender.com/products', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
