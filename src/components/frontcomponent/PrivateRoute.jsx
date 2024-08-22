@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 const PrivateRoute = ({ children }) => {
   const token = JSON.parse(localStorage.getItem("jwtToken"));
 
-  return token ? children : <Navigate to="/login" />;
+  return token ? children : <Navigate to="/signup" />;
 };
 
 export default PrivateRoute;
