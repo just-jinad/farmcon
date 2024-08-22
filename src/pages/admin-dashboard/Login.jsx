@@ -36,8 +36,10 @@ const Login = () => {
         .required("Password cannot be empty."),
     }),
     onSubmit: (values) => {
+      
+      // http://localhost:8888/login
       console.log(values);
-      axios.post('http://localhost:8888/login', {
+      axios.post('https://myproject-backend-2jt1.onrender.com/login', {
         email: values.email,
         password: values.password,
       })
