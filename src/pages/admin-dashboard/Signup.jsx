@@ -106,7 +106,7 @@ const Signup = () => {
     }),
     onSubmit: (values) => {
       axios
-        .post("http://localhost:8888/login", values)
+        .post("https://myproject-backend-2jt1.onrender.com/login", values)
         .then((response) => {
           const { token, user_id } = response.data; // Assuming the user ID is returned in the response
 
