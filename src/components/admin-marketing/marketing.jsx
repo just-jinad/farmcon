@@ -49,33 +49,34 @@ const Marketing = () => {
 
   return (
     <div className="p-6 min-h-screen">
-      <div className="flex justify-center mb-6">
-        <div className="relative w-full max-w-lg">
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={searchQuery}
-            onChange={handleSearch}
-            className="w-full py-2 pl-10 pr-4 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500"
-          />
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg
-              className="w-5 h-5 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.9 14.32a8 8 0 111.414-1.414l4.35 4.35a1 1 0 01-1.414 1.414l-4.35-4.35zm-4.9 2.18a6 6 0 100-12 6 6 0 000 12z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
-          <button className="absolute right-0 top-0 mt-2 mr-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none">
-            Search
-          </button>
-        </div>
-      </div>
+     <div className="flex justify-center mb-6">
+  <div className="relative w-full max-w-lg">
+    <input
+      type="text"
+      placeholder="Search products..."
+      value={searchQuery}
+      onChange={handleSearch}
+      className="w-full py-3 pl-12 pr-4 text-gray-700 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring focus:border-blue-400 transition-all duration-200"
+    />
+    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+      <svg
+        className="w-5 h-5 text-gray-400"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          fillRule="evenodd"
+          d="M12.9 14.32a8 8 0 111.414-1.414l4.35 4.35a1 1 0 01-1.414 1.414l-4.35-4.35zm-4.9 2.18a6 6 0 100-12 6 6 0 000 12z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </div>
+    <button className="absolute right-0 top-0 mt-1 mr-1 bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 transition-all duration-200">
+      Search
+    </button>
+  </div>
+</div>
+
       <div className="w-full">
         {loading ? (
           <div className="flex justify-center items-center">
