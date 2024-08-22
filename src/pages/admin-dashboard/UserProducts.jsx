@@ -18,7 +18,7 @@ const UserProducts = () => {
       try {
         const token = JSON.parse(localStorage.getItem("jwtToken"));
         const response = await axios.get(
-          "http://localhost:8888/user/products",
+          "https://myproject-backend-2jt1.onrender.com/user/products",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -52,7 +52,7 @@ const UserProducts = () => {
     if (confirmed) {
       try {
         const token = JSON.parse(localStorage.getItem("jwtToken"));
-        await axios.delete(`http://localhost:8888/products/${productId}`, {
+        await axios.delete(`https://myproject-backend-2jt1.onrender.com/products/${productId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -81,7 +81,7 @@ const UserProducts = () => {
     try {
       const token = JSON.parse(localStorage.getItem("jwtToken"));
       await axios.put(
-        "http://localhost:8888/user/updateProfile",
+        "https://myproject-backend-2jt1.onrender.com/user/updateProfile",
         updatedProfile,
         {
           headers: {

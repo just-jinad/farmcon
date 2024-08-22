@@ -7,7 +7,7 @@ function ChatDashboard({ userId }) {
   const [selectedChat, setSelectedChat] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:8888/userChats", { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }})
+    axios.get("https://myproject-backend-2jt1.onrender.com/userChats", { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }})
       .then(res => setChats(res.data));
   }, []);
 

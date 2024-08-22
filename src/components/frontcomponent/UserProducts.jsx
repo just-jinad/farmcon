@@ -12,7 +12,7 @@ const UserProducts = () => {
       try {
         const token = JSON.parse(localStorage.getItem("jwtToken"));
         const response = await axios.get(
-          "http://localhost:8888/user/products",
+          "https://myproject-backend-2jt1.onrender.comuser/products",
           {
             headers: {
               Authorization: `Bearer ${token}`,

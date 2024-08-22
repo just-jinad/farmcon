@@ -19,7 +19,7 @@ const Navba = ({ onLoginClick }) => {
     localStorage.removeItem("jwtToken");
     toast("Logged out successfully", { type: "success" });
     closeModal();
-    navigate("/login");
+    navigate("/signup");
   };
 
   const { switchLanguage, translations } = useContext(TranslationContext); // Access switchLanguage from context

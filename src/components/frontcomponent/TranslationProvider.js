@@ -50,7 +50,7 @@ const TranslationProvider = ({ children }) => {
       'contact_us', 
       'description']; // Add your keys here
     try {
-      const response = await axios.post('http://localhost:8888/translate', {
+      const response = await axios.post('https://myproject-backend-2jt1.onrender.com/translate', {
         keys,
         language: lang,
       });

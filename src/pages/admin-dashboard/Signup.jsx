@@ -67,7 +67,7 @@ const Signup = () => {
     }),
     onSubmit: (values, { resetForm }) => {
       axios
-        .post("http://localhost:8888/register", values)
+        .post("https://myproject-backend-2jt1.onrender.com/register", values)
         .then((response) => {
           if (response.status === 200) {
             toast.success("User has been signed up successfully", {

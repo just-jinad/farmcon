@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:8888");
+const socket = io("https://myproject-backend-2jt1.onrender.com");
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -18,7 +18,7 @@ function Chat() {
       if (chatId) {
         try {
           const response = await axios.get(
-            `http://localhost:8888/messages/${chatId}`
+            `https://myproject-backend-2jt1.onrender.com/messages/${chatId}`
           );
           console.log("Fetched messages:", response.data); // Debugging
           setMessages(response.data);
@@ -70,7 +70,7 @@ function Chat() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:8888/startChat", {
+      const response = await axios.post("https://myproject-backend-2jt1.onrender.com/startChat", {
         user1_id: currentUserId,
         user2_id: userToChatWith,
       });
