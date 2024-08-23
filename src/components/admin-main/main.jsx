@@ -46,7 +46,7 @@ const Main = () => {
 
     try {
       const token = getToken(); // Retrieve the token
-      const response = await axios.post("http://localhost:8888/upload", data, {
+      const response = await axios.post("https://myproject-backend-2jt1.onrender.com/upload", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
