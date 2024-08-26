@@ -14,7 +14,7 @@ const Signup = () => {
   const { switchLanguage, translations } = useContext(TranslationContext); // Access switchLanguage from context
 
   useEffect(() => {
-    switchLanguage("en"); 
+    switchLanguage("en");
   }, []);
   // Set the default view to the registration form
   const [isSignIn, setIsSignIn] = useState(false);
@@ -141,7 +141,9 @@ const Signup = () => {
       <ToastContainer />
       {/* Left Section */}
       <div className="hidden md:flex w-1/2 bg-teal-700 text-white flex-col justify-center items-start p-12">
-        <h1 className="text-4xl font-bold mb-4">{translations.signupWords || 'loading..'}</h1>
+        <h1 className="text-4xl font-bold mb-4">
+          {translations.signupWords || "loading.."}
+        </h1>
         <p className="mb-6">
           <Typewriter
             text={translations.typewriter || "loading..."}
@@ -157,7 +159,7 @@ const Signup = () => {
             {isSignIn ? (
               <>
                 <span className="text-gray-500 mr-2">
-                  {translations.question1 || 'loading...'}
+                  {translations.question1 || "loading..."}
                 </span>
                 <button
                   onClick={() => setIsSignIn(false)}
@@ -169,13 +171,13 @@ const Signup = () => {
             ) : (
               <>
                 <span className="text-gray-500 mr-2">
-                {translations.question2 || "loading..."}
+                  {translations.question2 || "loading..."}
                 </span>
                 <button
                   onClick={() => setIsSignIn(true)}
                   className="bg-teal-700 text-white px-4 py-2 rounded"
                 >
-                 {translations.login || "loading..."}
+                  {translations.login || "loading..."}
                 </button>
               </>
             )}
@@ -193,7 +195,7 @@ const Signup = () => {
                 <form id="loginForm" onSubmit={formikLogin.handleSubmit}>
                   <div className="mb-4">
                     <label htmlFor="email" className="block text-gray-700">
-                      {translations.email || 'loading'}
+                      {translations.email || "loading"}
                     </label>
                     <input
                       type="email"
@@ -214,8 +216,7 @@ const Signup = () => {
 
                   <div className="mb-4">
                     <label htmlFor="password" className="block text-gray-700">
-                    {translations.password || 'loading'}
-
+                      {translations.password || "loading"}
                     </label>
                     <div className="relative">
                       <input
@@ -252,7 +253,7 @@ const Signup = () => {
                     type="submit"
                     className="w-full bg-teal-700 text-white font-semibold px-4 py-2 rounded shadow hover:bg-teal-600 transition"
                   >
-                    {translations.login || 'loading...'}
+                    {translations.login || "loading..."}
                   </button>
                 </form>
               </motion.div>

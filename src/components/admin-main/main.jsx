@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Cards from "../../components/admin-sale-cards/cards";
 import Options from "../../components/options/options";
 import Bar from "../../components/charts/bar-graph/bar";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 
 const Main = () => {
@@ -15,6 +17,8 @@ const Main = () => {
     category: "",
     price: "",
     availability: "",
+    unitPrice: "",
+    minimumOrder: "", 
     location: "",
     file: null,
   });
@@ -46,28 +50,43 @@ const Main = () => {
 
     try {
       const token = getToken(); // Retrieve the token
-      const response = await axios.post("https://myproject-backend-2jt1.onrender.com/upload", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.post(
+        "https://myproject-backend-2jt1.onrender.com/upload",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response) {
+        console.log(response);
+        
         console.log(response.data.message);
-        toast(response.data.message, { type: "success" });
-        setFormData({
-          productName: "",
-          productDescription: "",
-          category: "",
-          price: "",
-          availability: "",
-          location: "",
-          file: null,
-        });
-        setUploadedImage(null); // Clear the uploaded image state
-        // Close modal after successful submission
-        setModalOpen(false);
+        let message = response.data.status
+        if(message === 200){
+          toast.success("Product uploaded successfully", {
+            position: "top-center",
+          })
+        }else{
+          alert('does not match')
+        }
+        setTimeout(() => {
+          setFormData({
+            productName: "",
+            productDescription: "",
+            category: "",
+            price: "",
+            availability: "",
+            location: "",
+            file: null,
+          });
+          setUploadedImage(null); // Clear the uploaded image state
+          // Close modal after successful submission
+          setModalOpen(false);
+        }, 3000);
       }
     } catch (error) {
       console.error("Error uploading product:", error);
@@ -115,14 +134,33 @@ const Main = () => {
               >
                 Category
               </label>
-              <input
+              <select
                 id="category"
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
                 className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                type="text"
-              />
+              >
+                <option value="">Select Category</option>
+                <option value="Cereal Crops">Cereal Crops</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Fruits">Fruits</option>
+                <option value=" Legumes"> Legumes</option>
+                <option value=" Root and Tuber Crops">
+                  {" "}
+                  Root and Tuber Crops
+                </option>
+                <option value=" Nuts and Seeds"> Nuts and Seeds</option>
+                <option value=" Livestock Products">Livestock Products</option>
+                <option value=" Spices and Herbs">Spices and Herbs</option>
+                <option value="  Beverage Crops"> Beverage Crops</option>
+                <option value="  Oil Crops"> Oil Crops</option>
+                <option value="  Fibrous Crops"> Fibrous Crops</option>
+                <option value="  Aquaculture/Fishery Products">
+                  {" "}
+                  Aquaculture/Fishery Products
+                </option>
+              </select>
             </div>
 
             <div className="col-span-1 md:col-span-2">
@@ -141,22 +179,42 @@ const Main = () => {
               ></textarea>
             </div>
 
-            <div>
-              <label
-                htmlFor="price"
-                className="block text-sm font-semibold text-teal-600"
-              >
-                Price
-              </label>
-              <input
-                id="price"
-                name="price"
-                value={formData.price}
-                onChange={handleInputChange}
-                className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                type="text"
-              />
-            </div>
+            <div className="grid grid-cols-2 gap-4">
+  <div>
+    <label
+      htmlFor="unitPrice"
+      className="block text-sm font-semibold text-teal-600"
+    >
+      Unit Price
+    </label>
+    <input
+      id="unitPrice"
+      name="unitPrice"
+      value={formData.unitPrice}
+      onChange={handleInputChange}
+      className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+      type="text"
+    />
+  </div>
+
+  <div>
+    <label
+      htmlFor="minimumOrder"
+      className="block text-sm font-semibold text-teal-600"
+    >
+      Minimum Order
+    </label>
+    <input
+      id="minimumOrder"
+      name="minimumOrder"
+      value={formData.minimumOrder}
+      onChange={handleInputChange}
+      className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+      type="text"
+    />
+  </div>
+</div>
+
 
             <div>
               <label
@@ -165,14 +223,19 @@ const Main = () => {
               >
                 Availability
               </label>
-              <input
+              <select
                 id="availability"
                 name="availability"
                 value={formData.availability}
                 onChange={handleInputChange}
                 className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                type="text"
-              />
+              >
+                <option value="">Select Availability</option>
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+                <option value="Preorder">Preorder</option>
+                {/* Add more availability options as needed */}
+              </select>
             </div>
 
             <div>
