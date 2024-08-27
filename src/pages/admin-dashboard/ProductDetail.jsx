@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BeatLoader from 'react-spinners/BeatLoader';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const ProductDetail = () => {
@@ -38,9 +38,11 @@ const ProductDetail = () => {
         </div>
       ) : (
         <div>
-          <a href="/" className="text-blue-500 flex items-center mb-4">
+            <Link  className="text-blue-500 flex items-center mb-4" to={'/admin-dashboard/marketing'}>
             <FaArrowLeft className="mr-2" /> Back to Products
-          </a>
+            </Link>
+          {/* <a href="/admin-dashboard/marketing">
+          </a> */}
           {product && (
             <div className="bg-white rounded-lg shadow-lg p-6">
               <h2 className="text-2xl font-bold mb-4">{product.productName}</h2>
