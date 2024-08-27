@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Main = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [uploadedImage, setUploadedImage] = useState(null);
+  const [uploadedImages, setUploadedImages] = useState([]); // Changed to array
 
   const [formData, setFormData] = useState({
     productName: "",
@@ -18,9 +18,9 @@ const Main = () => {
     price: "",
     availability: "",
     unitPrice: "",
-    minimumOrder: "", 
+    minimumOrder: "",
     location: "",
-    file: null,
+    files: [], // Updated to an array
   });
 
   const handleInputChange = (e) => {
@@ -29,14 +29,12 @@ const Main = () => {
   };
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({ ...formData, file });
+    const files = Array.from(e.target.files); // Convert file list to array
+    setFormData({ ...formData, files }); // Store all files in formData
 
-    // Create a URL for the uploaded image
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setUploadedImage(imageUrl);
-    }
+    // Create URLs for the uploaded images
+    const imageUrls = files.map((file) => URL.createObjectURL(file));
+    setUploadedImages(imageUrls); // Update uploaded images state
   };
 
   const getToken = () => JSON.parse(localStorage.getItem("jwtToken"));
@@ -45,7 +43,11 @@ const Main = () => {
     e.preventDefault();
     const data = new FormData();
     for (const key in formData) {
-      data.append(key, formData[key]);
+      if (key === "files") {
+        formData[key].forEach((file) => data.append("files", file)); // Append multiple files
+      } else {
+        data.append(key, formData[key]);
+      }
     }
 
     try {
@@ -62,17 +64,16 @@ const Main = () => {
       );
 
       if (response) {
-        console.log(response);
-        
         console.log(response.data.message);
-        let message = response.data.status
-        if(message === 200){
+        let message = response.data.status;
+        if (message === 200) {
           toast.success("Product uploaded successfully", {
             position: "top-center",
-          })
-        }else{
-          alert('does not match')
+          });
+        } else {
+          alert("does not match");
         }
+
         setTimeout(() => {
           setFormData({
             productName: "",
@@ -80,11 +81,12 @@ const Main = () => {
             category: "",
             price: "",
             availability: "",
+            unitPrice: "",
+            minimumOrder: "",
             location: "",
-            file: null,
+            files: [], // Reset files after successful submission
           });
-          setUploadedImage(null); // Clear the uploaded image state
-          // Close modal after successful submission
+          setUploadedImages([]); // Clear uploaded images
           setModalOpen(false);
         }, 3000);
       }
@@ -120,6 +122,7 @@ const Main = () => {
               <input
                 id="productName"
                 name="productName"
+                placeholder="Corn"
                 value={formData.productName}
                 onChange={handleInputChange}
                 className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -173,6 +176,7 @@ const Main = () => {
               <textarea
                 id="productDescription"
                 name="productDescription"
+                placeholder="Describe your product"
                 value={formData.productDescription}
                 onChange={handleInputChange}
                 className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -180,41 +184,42 @@ const Main = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-  <div>
-    <label
-      htmlFor="unitPrice"
-      className="block text-sm font-semibold text-teal-600"
-    >
-      Unit Price
-    </label>
-    <input
-      id="unitPrice"
-      name="unitPrice"
-      value={formData.unitPrice}
-      onChange={handleInputChange}
-      className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-      type="text"
-    />
-  </div>
+              <div>
+                <label
+                  htmlFor="unitPrice"
+                  className="block text-sm font-semibold text-teal-600"
+                >
+                  Unit Price
+                </label>
+                <input
+                  id="unitPrice"
+                  name="unitPrice"
+                  placeholder="Price per unit (e.g., per kg, per bag)"
+                  value={formData.unitPrice}
+                  onChange={handleInputChange}
+                  className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  type="number"
+                />
+              </div>
 
-  <div>
-    <label
-      htmlFor="minimumOrder"
-      className="block text-sm font-semibold text-teal-600"
-    >
-      Minimum Order
-    </label>
-    <input
-      id="minimumOrder"
-      name="minimumOrder"
-      value={formData.minimumOrder}
-      onChange={handleInputChange}
-      className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-      type="text"
-    />
-  </div>
-</div>
-
+              <div>
+                <label
+                  htmlFor="minimumOrder"
+                  className="block text-sm font-semibold text-teal-600"
+                >
+                  Minimum Order
+                </label>
+                <input
+                  id="minimumOrder"
+                  name="minimumOrder"
+                  placeholder="The smallest amount a buyer can order"
+                  value={formData.minimumOrder}
+                  onChange={handleInputChange}
+                  className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  type="number"
+                />
+              </div>
+            </div>
 
             <div>
               <label
@@ -248,6 +253,7 @@ const Main = () => {
               <input
                 id="location"
                 name="location"
+                placeholder="Ogbomoso"
                 value={formData.location}
                 onChange={handleInputChange}
                 className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -260,19 +266,24 @@ const Main = () => {
                 htmlFor="dropzone-file"
                 className="block text-sm font-semibold  text-teal-600"
               >
-                Upload Image
+                Upload Images
               </label>
               <label
                 htmlFor="dropzone-file"
                 className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md cursor-pointer"
               >
                 <div className="space-y-1 text-center">
-                  {uploadedImage ? (
-                    <img
-                      src={uploadedImage}
-                      alt="Uploaded Product"
-                      className="object-cover w-24 h-24 mx-auto"
-                    />
+                  {uploadedImages.length > 0 ? (
+                    <div className="flex flex-wrap justify-center">
+                      {uploadedImages.map((imageUrl, index) => (
+                        <img
+                          key={index}
+                          src={imageUrl}
+                          alt={`Uploaded Product ${index + 1}`}
+                          className="object-cover w-24 h-24 mx-2 mb-2"
+                        />
+                      ))}
+                    </div>
                   ) : (
                     <svg
                       className="mx-auto h-12 w-12 text-gray-400"
@@ -291,12 +302,14 @@ const Main = () => {
                   )}
                   <div className="flex text-sm text-teal-600">
                     <span className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500">
-                      Upload a file
+                      Upload files
                       <input
                         id="dropzone-file"
-                        name="file"
+                        name="files"
+                        accept="image/*"
                         onChange={handleFileChange}
                         type="file"
+                        multiple // Enable multiple file selection
                         className="sr-only"
                       />
                     </span>

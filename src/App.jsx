@@ -13,6 +13,7 @@ import Test from "./pages/admin-dashboard/test";
 import { TranslationProvider } from "./components/frontcomponent/TranslationProvider";
 import Chat from "./pages/admin-dashboard/Chat";
 import ChatDashboard from "./pages/admin-dashboard/ChatDashboard";
+import ProductDetail from "./pages/admin-dashboard/ProductDetail";
 
 
 
@@ -54,6 +55,7 @@ function App() {
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/test" element={< Test/>} />
         <Route path="/chat" element={< Chat/>} />
+        <Route path="/products/:id" element={<ProductDetail/>}/>
         <Route path="/chat_dashboard" element={< ChatDashboard />} />
 
         
