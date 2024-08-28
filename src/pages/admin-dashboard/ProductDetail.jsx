@@ -1,4 +1,3 @@
-// ProductDetail.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BeatLoader from 'react-spinners/BeatLoader';
@@ -9,6 +8,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); // Track current image index
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -30,45 +30,103 @@ const ProductDetail = () => {
     fetchProduct();
   }, [id]);
 
+  const handleRotateImage = () => {
+    if (product && product.imagePath) {
+      const images = JSON.parse(product.imagePath);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }
+  };
+
   return (
-    <div className="p-6 min-h-screen">
+    <div className="min-h-screen bg-gray-100 p-10">
       {loading ? (
         <div className="flex justify-center items-center">
           <BeatLoader color="#036672" />
         </div>
       ) : (
-        <div>
-            <Link  className="text-blue-500 flex items-center mb-4" to={'/admin-dashboard/marketing'}>
-            <FaArrowLeft className="mr-2" /> Back to Products
-            </Link>
-          {/* <a href="/admin-dashboard/marketing">
-          </a> */}
-          {product && (
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-2xl font-bold mb-4">{product.productName}</h2>
-              <p className="text-gray-500 mb-4">{product.productDescription}</p>
-              <div className="mb-4">
-                {JSON.parse(product.imagePath).map((img, idx) => (
+        <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8 grid grid-cols-2 gap-10">
+          {/* Left Section: Image Viewer */}
+          <div className="space-y-6">
+            <div className="relative">
+              {product && product.imagePath && (
+                <img
+                  src={JSON.parse(product.imagePath)[currentImageIndex]} // Display the current image
+                  alt={`Product Image ${currentImageIndex + 1}`}
+                  className="w-full h-96 object-cover rounded-lg shadow-md"
+                />
+              )}
+              {/* Rotate Feature */}
+              <div className="absolute top-full transform -translate-y-10 left-1/2 -translate-x-1/2">
+                <button
+                  onClick={handleRotateImage}
+                  className="bg-white text-sm font-semibold text-gray-700 py-1 px-4 rounded-full shadow-lg"
+                >
+                  Rotate
+                </button>
+              </div>
+            </div>
+
+            {/* Thumbnail Images */}
+            <div className="flex space-x-4">
+              {product &&
+                product.imagePath &&
+                JSON.parse(product.imagePath).map((img, idx) => (
                   <img
                     key={idx}
                     src={img}
-                    alt={`Image ${idx + 1}`}
-                    className="w-full max-h-64 object-cover rounded-lg mb-2"
+                    alt={`Thumbnail ${idx + 1}`}
+                    className={`w-20 h-20 object-cover rounded-lg shadow-md ${
+                      currentImageIndex === idx ? 'ring-2 ring-blue-500' : ''
+                    }`}
+                    onClick={() => setCurrentImageIndex(idx)} // Clicking thumbnail changes the main image
                   />
                 ))}
+            </div>
+          </div>
+
+          {/* Right Section: Product Details */}
+          <div className="space-y-6">
+            {/* Product Information */}
+            <div>
+              <h2 className="text-3xl font-bold text-gray-800">{product?.productName}</h2>
+              <p className="text-yellow-500 text-sm mt-2">
+                ★ ★ ★ ★ ★ <span className="text-gray-500">(10 Reviews)</span>
+              </p>
+            </div>
+
+            {/* Product Description */}
+            <p className="text-gray-600 leading-relaxed">
+              Premium & comfortable memory foam with a strong structure built with teakwood, it feels amazing.
+            </p>
+
+            {/* Price and Quantity Selector */}
+            <div className="flex items-center space-x-4">
+              <p className="text-3xl font-bold text-gray-900">${product?.price?.toFixed(2)}</p>
+              <div className="flex items-center border rounded-lg px-3 py-1">
+                <span className="text-sm font-semibold">Qty: </span>
+                <input
+                  type="number"
+                  min="1"
+                  defaultValue="1"
+                  className="w-12 ml-2 text-center border-none focus:outline-none"
+                />
               </div>
-              <p className="text-lg font-bold mb-4">${product.price.toFixed(2)}</p>
-              <p className="text-gray-500 mb-2">Location: {product.location}</p>
-              <p className="text-gray-500 mb-2">Availability: {product.availability}</p>
-              <p className="text-gray-500 mb-2">Phone: {product.phone_number}</p>
-              <p className="text-gray-500 mb-2">User ID: {product.user_id}</p>
-              <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 transition-all duration-200"
-              >
+            </div>
+
+            {/* Availability and Contact */}
+            <p className="text-gray-500">Location: {product?.location}</p>
+            <p className="text-gray-500">Availability: {product?.availability}</p>
+
+            {/* Buttons */}
+            <div className="flex space-x-4">
+              <button className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 transition-all duration-200">
                 Chat with Seller
               </button>
+              <button className="bg-gray-300 text-black px-6 py-3 rounded-lg hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-200 transition-all duration-200">
+                Close
+              </button>
             </div>
-          )}
+          </div>
         </div>
       )}
     </div>
